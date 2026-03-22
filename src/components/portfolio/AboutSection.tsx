@@ -25,9 +25,10 @@ const AboutSection = () => {
           {/* Bio */}
           <div className={`md:col-span-3 ${isVisible ? "animate-reveal-right delay-200" : "opacity-0"}`}>
             <p className="text-primary font-medium tracking-widest uppercase text-sm mb-3">Sobre</p>
-            <h2 className="font-display text-3xl md:text-4xl mb-6 leading-tight">
-              Ciência de fronteira com impacto real
+            <h2 className="font-display text-3xl md:text-4xl mb-2 leading-tight">
+              Um nerd que aprendeu a falar
             </h2>
+            <p className="text-primary/80 text-sm italic mb-6">Entendendo conceitos complexos de forma simples</p>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
                 Físico, pesquisador e líder de iniciativas em computação quântica, econofísica e inovação aplicada. Cofundador do <strong className="text-foreground">ICTQ Fóton</strong> e da <strong className="text-foreground">LACQ Feynman</strong>, atuando na interseção entre pesquisa científica, desenvolvimento tecnológico e aplicações estratégicas.
