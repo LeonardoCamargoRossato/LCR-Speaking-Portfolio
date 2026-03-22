@@ -16,11 +16,11 @@ import heroStage from "@/assets/hero-stage.jpg";
 const photos = [
   { src: heroSpeaking, alt: "TechNow — Computação Quântica: Que Futuro Esperamos?", label: "TechNow 2025" },
   { src: galleryQuantum, alt: "Palestra sobre Quantum Computing", label: "MVP Conference" },
-  { src: galleryFotonLacq, alt: "Evento Fóton + LACQ na PUCRS", label: "Fóton + LACQ — PUCRS" },
+  { src: galleryFotonLacq, alt: "Evento Foton + LACQ na PUCRS", label: "Foton + LACQ — PUCRS" },
   { src: heroStage, alt: "Palestra em grande evento de tecnologia", label: "DSS Curitiba" },
   { src: gallerySelfie, alt: "Selfie com participantes após palestra", label: "Workshop LACQ" },
   { src: galleryLatinoware, alt: "Latinoware 2025 — Congresso Latino-americano", label: "Latinoware 2025" },
-  { src: galleryFotonEstados, alt: "Apresentação ICTQ Fóton — 11 estados", label: "ICTQ Fóton" },
+  { src: galleryFotonEstados, alt: "Apresentação ICTQ Foton — 11 estados", label: "ICTQ Foton" },
   { src: galleryIta, alt: "Palestra sobre Computação Quântica no ITA", label: "ITA" },
   { src: gallerySolvay, alt: "Apresentação na PUCRS — Conferência Solvay", label: "PUCRS" },
   { src: galleryCcs, alt: "CCS 2023 — Apresentação de pesquisa", label: "CCS 2023" },
