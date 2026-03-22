@@ -42,11 +42,13 @@ const AboutSection = () => {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 mt-8 pt-8 border-t border-border">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 mt-8 pt-8 border-t border-border">
               {[
                 { value: "10", label: "Estados" },
                 { value: "50+", label: "Palestras / Painéis" },
                 { value: "5+", label: "Curadorias de Trilhas de Quantum" },
+                { value: "8+", label: "Curadoria de Eventos" },
+                { value: "5+", label: "Anos de P&D" },
               ].map((stat) => (
                 <div key={stat.label}>
                   <p className="text-2xl md:text-3xl font-display text-primary">{stat.value}</p>
