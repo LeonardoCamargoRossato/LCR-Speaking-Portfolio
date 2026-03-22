@@ -3,6 +3,7 @@ import HeroSection from "@/components/portfolio/HeroSection";
 import AboutSection from "@/components/portfolio/AboutSection";
 import TopicsSection from "@/components/portfolio/TopicsSection";
 import EventsSection from "@/components/portfolio/EventsSection";
+import GallerySection from "@/components/portfolio/GallerySection";
 import PublicationsSection from "@/components/portfolio/PublicationsSection";
 import ContactSection from "@/components/portfolio/ContactSection";
 
@@ -14,6 +15,7 @@ const Index = () => {
       <AboutSection />
       <TopicsSection />
       <EventsSection />
+      <GallerySection />
       <PublicationsSection />
       <ContactSection />
       <footer className="py-8 text-center text-sm text-muted-foreground border-t border-border">
