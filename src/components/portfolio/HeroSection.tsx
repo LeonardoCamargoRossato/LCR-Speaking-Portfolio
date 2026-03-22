@@ -24,7 +24,7 @@ const HeroSection = () => {
           Leonardo Camargo Rossato
         </h1>
         <p className="max-w-xl text-lg md:text-xl text-muted-foreground leading-relaxed animate-reveal-up delay-400">
-          Conectando computação quântica, ciência de dados e inovação — do palco acadêmico ao mundo corporativo.
+          Tecnologia através da Ciência — levando computação quântica, ciência de dados e inovação do palco acadêmico ao mundo corporativo.
         </p>
         <div className="mt-8 flex flex-wrap gap-4 animate-reveal-up delay-600">
           <a

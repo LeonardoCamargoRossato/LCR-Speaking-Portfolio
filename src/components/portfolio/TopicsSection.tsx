@@ -37,7 +37,8 @@ const TopicsSection = () => {
       <div className="container max-w-5xl mx-auto px-6">
         <div className={`text-center mb-16 ${isVisible ? "animate-reveal-up" : "opacity-0"}`}>
           <p className="text-primary font-medium tracking-widest uppercase text-sm mb-3">Temas</p>
-          <h2 className="font-display text-3xl md:text-4xl">Temas de Apresentação</h2>
+          <h2 className="font-display text-3xl md:text-4xl mb-3">Quantum nos Negócios</h2>
+          <p className="text-muted-foreground max-w-lg mx-auto">Entendendo conceitos complexos de forma simples — do laboratório à sala de reunião.</p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">

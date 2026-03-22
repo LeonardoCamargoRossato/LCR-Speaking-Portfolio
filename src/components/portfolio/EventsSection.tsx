@@ -32,9 +32,10 @@ const EventsSection = () => {
           {/* Events list */}
           <div className={`${isVisible ? "animate-reveal-right delay-200" : "opacity-0"}`}>
             <p className="text-primary font-medium tracking-widest uppercase text-sm mb-3">Eventos</p>
-            <h2 className="font-display text-3xl md:text-4xl mb-8 leading-tight">
-              Construindo pontes entre ciência e mercado
+            <h2 className="font-display text-3xl md:text-4xl mb-3 leading-tight">
+              Tecnologia através da Ciência
             </h2>
+            <p className="text-muted-foreground text-sm mb-8">Construindo pontes entre pesquisa acadêmica e o setor produtivo em todo o Brasil.</p>
 
             <div className="space-y-0">
               {events.map((event, i) => (
