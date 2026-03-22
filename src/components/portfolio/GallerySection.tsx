@@ -12,15 +12,23 @@ import galleryQuantum from "@/assets/gallery-quantum.jpg";
 import gallerySolvay from "@/assets/gallery-solvay.jpg";
 import heroSpeaking from "@/assets/hero-speaking.jpg";
 import heroStage from "@/assets/hero-stage.jpg";
+import galleryAlesp from "@/assets/gallery-alesp.jpg";
+import galleryIip from "@/assets/gallery-iip.jpg";
+import galleryGca from "@/assets/gallery-gca.jpg";
+import galleryLatinoware2 from "@/assets/gallery-latinoware2.jpg";
 
 const photos = [
   { src: heroSpeaking, alt: "TechNow — Computação Quântica: Que Futuro Esperamos?", label: "TechNow 2025" },
   { src: galleryQuantum, alt: "Palestra sobre Quantum Computing", label: "MVP Conference" },
+  { src: galleryAlesp, alt: "Audiência pública na Assembleia Legislativa de São Paulo", label: "ALESP — São Paulo" },
   { src: galleryFotonLacq, alt: "Evento Foton + LACQ na PUCRS", label: "Foton + LACQ — PUCRS" },
   { src: heroStage, alt: "Palestra em grande evento de tecnologia", label: "DSS Curitiba" },
+  { src: galleryIip, alt: "Apresentação acadêmica em auditório", label: "IIP — Natal" },
   { src: gallerySelfie, alt: "Selfie com participantes após palestra", label: "Workshop LACQ" },
   { src: galleryLatinoware, alt: "Latinoware 2025 — Congresso Latino-americano", label: "Latinoware 2025" },
+  { src: galleryGca, alt: "Apresentação sobre Gravitational Cluster Algorithm", label: "Pesquisa — GCA" },
   { src: galleryFotonEstados, alt: "Apresentação ICTQ Foton — 11 estados", label: "ICTQ Foton" },
+  { src: galleryLatinoware2, alt: "Latinoware 2025 — sala cheia", label: "Latinoware 2025" },
   { src: galleryIta, alt: "Palestra sobre Computação Quântica no ITA", label: "ITA" },
   { src: gallerySolvay, alt: "Apresentação na PUCRS — Conferência Solvay", label: "PUCRS" },
   { src: galleryCcs, alt: "CCS 2023 — Apresentação de pesquisa", label: "CCS 2023" },
