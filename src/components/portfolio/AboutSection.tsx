@@ -1,5 +1,5 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import profileImage from "@/assets/profile.jpg";
+import profileImage from "@/assets/profile-quantum.jpg";
 
 const AboutSection = () => {
   const { ref, isVisible } = useScrollReveal();
@@ -14,7 +14,7 @@ const AboutSection = () => {
               <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl shadow-background/50">
                 <img
                   src={profileImage}
-                  alt="Leonardo Camargo Rossato"
+                  alt="Leonardo Camargo Rossato palestrando sobre Quantum Computing"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -31,7 +31,10 @@ const AboutSection = () => {
             <p className="text-primary/80 text-sm italic mb-6">Entendendo conceitos complexos de forma simples</p>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
-                Físico, pesquisador e líder de iniciativas em computação quântica, econofísica e inovação aplicada. Cofundador do <strong className="text-foreground">ICTQ Fóton</strong> e da <strong className="text-foreground">LACQ Feynman</strong>, atuando na interseção entre pesquisa científica, desenvolvimento tecnológico e aplicações estratégicas.
+                Desenvolvedor de tecnologias de ponta — quânticas e híbridas. Físico, pesquisador e palestrante atuando na interseção entre pesquisa científica, desenvolvimento tecnológico e aplicações estratégicas.
+              </p>
+              <p>
+                Presidente do <strong className="text-foreground">Fóton — Instituto de Ciências e Tecnologias Quânticas</strong>, liderando projetos de P&D em otimização, sensores de alta precisão e criptografia quântica. Cofundador da <strong className="text-foreground">LACQ Feynman</strong>, movimento nacional de Ligas Acadêmicas de Computação Quântica, conectando universidades e o setor produtivo em todo o Brasil.
               </p>
               <p>
                 Doutorando em Engenharia pelo <strong className="text-foreground">ITA</strong>, Mestre em Física pela <strong className="text-foreground">UFRGS</strong> e Bacharel em Física pela <strong className="text-foreground">UFSM</strong>. Selecionado como único brasileiro entre sete pesquisadores apoiados mundialmente para o CCS 2023.
