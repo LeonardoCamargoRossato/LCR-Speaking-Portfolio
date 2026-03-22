@@ -34,7 +34,7 @@ const AboutSection = () => {
                 Desenvolvedor de tecnologias de ponta — quânticas e híbridas. Físico, pesquisador e palestrante atuando na interseção entre pesquisa científica, desenvolvimento tecnológico e aplicações estratégicas.
               </p>
               <p>
-                Presidente do <strong className="text-foreground">Fóton — Instituto de Ciências e Tecnologias Quânticas</strong>, liderando projetos de P&D em otimização, sensores de alta precisão e criptografia quântica. Cofundador da <strong className="text-foreground">LACQ Feynman</strong>, movimento nacional de Ligas Acadêmicas de Computação Quântica, conectando universidades e o setor produtivo em todo o Brasil.
+                Presidente do <strong className="text-foreground">Foton — Instituto de Ciências e Tecnologias Quânticas</strong>, liderando projetos de P&D em otimização, sensores de alta precisão e criptografia quântica. Cofundador da <strong className="text-foreground">LACQ Feynman</strong>, movimento nacional de Ligas Acadêmicas de Computação Quântica, conectando universidades e o setor produtivo em todo o Brasil.
               </p>
               <p>
                 Doutorando em Engenharia pelo <strong className="text-foreground">ITA</strong>, Mestre em Física pela <strong className="text-foreground">UFRGS</strong> e Bacharel em Física pela <strong className="text-foreground">UFSM</strong>. Selecionado como único brasileiro entre sete pesquisadores apoiados mundialmente para o CCS 2023.
