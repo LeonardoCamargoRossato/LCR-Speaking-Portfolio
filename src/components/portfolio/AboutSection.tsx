@@ -47,6 +47,8 @@ const AboutSection = () => {
                 { value: "10", label: "Estados" },
                 { value: "50+", label: "Palestras / Painéis" },
                 { value: "5+", label: "Curadorias de Trilhas de Quantum" },
+                { value: "8+", label: "Curadoria de Eventos" },
+                { value: "5+", label: "Anos de P&D" },
               ].map((stat) => (
                 <div key={stat.label}>
                   <p className="text-2xl md:text-3xl font-display text-primary">{stat.value}</p>
