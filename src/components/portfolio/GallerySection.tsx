@@ -1,0 +1,100 @@
+import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useState } from "react";
+import { X } from "lucide-react";
+
+import galleryFotonLacq from "@/assets/gallery-foton-lacq.jpg";
+import galleryCcs from "@/assets/gallery-ccs.jpg";
+import gallerySelfie from "@/assets/gallery-selfie.jpg";
+import galleryLatinoware from "@/assets/gallery-latinoware.jpg";
+import galleryFotonEstados from "@/assets/gallery-foton-estados.jpg";
+import galleryIta from "@/assets/gallery-ita.jpg";
+import galleryQuantum from "@/assets/gallery-quantum.jpg";
+import gallerySolvay from "@/assets/gallery-solvay.jpg";
+import heroSpeaking from "@/assets/hero-speaking.jpg";
+import heroStage from "@/assets/hero-stage.jpg";
+
+const photos = [
+  { src: heroSpeaking, alt: "TechNow — Computação Quântica: Que Futuro Esperamos?", label: "TechNow 2025" },
+  { src: galleryQuantum, alt: "Palestra sobre Quantum Computing", label: "MVP Conference" },
+  { src: galleryFotonLacq, alt: "Evento Fóton + LACQ na PUCRS", label: "Fóton + LACQ — PUCRS" },
+  { src: heroStage, alt: "Palestra em grande evento de tecnologia", label: "DSS Curitiba" },
+  { src: gallerySelfie, alt: "Selfie com participantes após palestra", label: "Workshop LACQ" },
+  { src: galleryLatinoware, alt: "Latinoware 2025 — Congresso Latino-americano", label: "Latinoware 2025" },
+  { src: galleryFotonEstados, alt: "Apresentação ICTQ Fóton — 11 estados", label: "ICTQ Fóton" },
+  { src: galleryIta, alt: "Palestra sobre Computação Quântica no ITA", label: "ITA" },
+  { src: gallerySolvay, alt: "Apresentação na PUCRS — Conferência Solvay", label: "PUCRS" },
+  { src: galleryCcs, alt: "CCS 2023 — Apresentação de pesquisa", label: "CCS 2023" },
+];
+
+const GallerySection = () => {
+  const { ref, isVisible } = useScrollReveal();
+  const [lightbox, setLightbox] = useState<number | null>(null);
+
+  return (
+    <>
+      <section id="galeria" className="py-24 md:py-32" ref={ref}>
+        <div className="container max-w-6xl mx-auto px-6">
+          <div className={`text-center mb-16 ${isVisible ? "animate-reveal-up" : "opacity-0"}`}>
+            <p className="text-primary font-medium tracking-widest uppercase text-sm mb-3">Galeria</p>
+            <h2 className="font-display text-3xl md:text-4xl">Momentos em Palco</h2>
+          </div>
+
+          {/* Masonry-style grid */}
+          <div className="columns-2 md:columns-3 gap-4 space-y-4">
+            {photos.map((photo, i) => (
+              <div
+                key={i}
+                className={`break-inside-avoid group cursor-pointer ${
+                  isVisible ? "animate-reveal-up" : "opacity-0"
+                }`}
+                style={{ animationDelay: `${(i % 6) * 80 + 100}ms` }}
+                onClick={() => setLightbox(i)}
+              >
+                <div className="relative rounded-xl overflow-hidden">
+                  <img
+                    src={photo.src}
+                    alt={photo.alt}
+                    className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-background/0 group-hover:bg-background/50 transition-colors duration-300 flex items-end p-4">
+                    <span className="text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-2 group-hover:translate-y-0">
+                      {photo.label}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Lightbox */}
+      {lightbox !== null && (
+        <div
+          className="fixed inset-0 z-[100] bg-background/90 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in"
+          onClick={() => setLightbox(null)}
+        >
+          <button
+            onClick={() => setLightbox(null)}
+            className="absolute top-6 right-6 p-2 text-foreground hover:text-primary transition-colors"
+            aria-label="Fechar"
+          >
+            <X className="w-6 h-6" />
+          </button>
+          <img
+            src={photos[lightbox].src}
+            alt={photos[lightbox].alt}
+            className="max-w-full max-h-[85vh] object-contain rounded-lg"
+            onClick={(e) => e.stopPropagation()}
+          />
+          <p className="absolute bottom-8 left-1/2 -translate-x-1/2 text-sm text-muted-foreground">
+            {photos[lightbox].label}
+          </p>
+        </div>
+      )}
+    </>
+  );
+};
+
+export default GallerySection;
