@@ -1,18 +1,68 @@
+import { useState } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import stageImage from "@/assets/hero-stage.jpg";
+import { GraduationCap, Rocket, Globe, Building2 } from "lucide-react";
 
-const events = [
-  { name: "MVP Conference 2025", role: "Curadoria da trilha de Computação Quântica e palestrante" },
-  { name: "DSS Curitiba 2025", role: "Curadoria de palestrantes e painéis em computação quântica" },
-  { name: "TechNow 2025", role: "Divulgação e aplicação estratégica das tecnologias quânticas" },
-  { name: "Semana LACQ UFRGS", role: "Organização acadêmica e científica de evento de computação quântica" },
-  { name: "MOBI Festival 2025", role: "Palestrante convidado" },
-  { name: "ENAEPE 2025", role: "Palestrante e debatedor" },
-  { name: "Aula Magna Unisinos", role: "Palestrante convidado" },
+const categories = [
+  {
+    id: "academic",
+    label: "Acadêmicos",
+    icon: GraduationCap,
+    events: [
+      { name: "EOSBF 2023", role: "Encontro de Outono da SBF — Apresentação de trabalho" },
+      { name: "EOSBF 2024", role: "Encontro de Outono da SBF — Apresentação de trabalho" },
+      { name: "EOSBF 2025", role: "Encontro de Outono da SBF — Apresentação oral" },
+      { name: "CCS 2023", role: "Conference on Complex Systems — Apresentação oral internacional (bolsa YSI)" },
+      { name: "IIP Natal 2023", role: "Workshop on New Frontiers in Emergent Materials — Apresentação de trabalho" },
+      { name: "ENFE 2024", role: "Encontro Nacional de Física Estatística — Apresentação de trabalho" },
+      { name: "EIEMAT 2023", role: "Encontro Interinstitucional de Educação Matemática — Minicurso / palestra" },
+    ],
+  },
+  {
+    id: "tech",
+    label: "Tecnologia & Mercado",
+    icon: Rocket,
+    events: [
+      { name: "TechNow 2025", role: "SUCESU-RS — Palestrante" },
+      { name: "DSS Curitiba 2024", role: "Data Science Summit — Palestrante" },
+      { name: "DSS Curitiba 2025", role: "Data Science Summit — Curadoria + trilha quântica" },
+      { name: "MVP Conference 2025", role: "Microsoft — Palestrante + curador" },
+      { name: "Esquenta MVP POA 2025", role: "Palestrante + painelista" },
+      { name: "Latinoware 2025", role: "Itaipu — Curadoria e trilha quântica" },
+      { name: "Expointer 2025", role: "Palestrante — Tecnologias quânticas" },
+    ],
+  },
+  {
+    id: "outreach",
+    label: "Palestras & Divulgação",
+    icon: Globe,
+    events: [
+      { name: "MOBI Festival 2025", role: "Sorocaba — Palestrante" },
+      { name: "ENAEPE 2025", role: "Manaus — Palestrante" },
+      { name: "Evento Quântico Manaus 2025", role: "Tecnologias Quânticas — Palestrante" },
+      { name: "Workshop Computação Quântica Floripa", role: "7ª Edição — Palestrante" },
+    ],
+  },
+  {
+    id: "institutional",
+    label: "Institucional & Universidades",
+    icon: Building2,
+    events: [
+      { name: "Aula Magna UNISINOS 2025", role: "PPG Administração — Palestrante" },
+      { name: "Semana LACQ UFRGS 2025", role: "Computação Quântica — Organização + palestras" },
+      { name: "Jornada Foton–LACQ Tecnopuc 2025", role: "Tecnologias Quânticas — Palestrante recorrente" },
+      { name: "Inauguração LACQ UFRGS 2024", role: "Palestrante" },
+      { name: "Inauguração LACQ PUCRS 2025", role: "Palestrante" },
+      { name: "Inauguração LACQ USP 2025", role: "Palestrante" },
+    ],
+  },
 ];
 
 const EventsSection = () => {
   const { ref, isVisible } = useScrollReveal();
+  const [activeTab, setActiveTab] = useState("academic");
+
+  const activeCategory = categories.find((c) => c.id === activeTab)!;
 
   return (
     <section id="eventos" className="py-24 md:py-32 bg-noise" ref={ref}>
@@ -33,20 +83,49 @@ const EventsSection = () => {
           <h2 className="font-display text-3xl md:text-4xl mb-3 leading-tight">
             Tecnologia através da Ciência
           </h2>
-          <p className="text-muted-foreground text-sm mb-8">Construindo pontes entre pesquisa acadêmica e o setor produtivo em todo o Brasil.</p>
+          <p className="text-muted-foreground text-sm mb-8">
+            Construindo pontes entre pesquisa acadêmica e o setor produtivo em mais de 10 estados brasileiros.
+          </p>
 
+          {/* Category tabs */}
+          <div className="flex flex-wrap gap-2 mb-8">
+            {categories.map((cat) => {
+              const Icon = cat.icon;
+              return (
+                <button
+                  key={cat.id}
+                  onClick={() => setActiveTab(cat.id)}
+                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                    activeTab === cat.id
+                      ? "bg-primary text-primary-foreground shadow-md"
+                      : "bg-muted text-muted-foreground hover:text-foreground hover:bg-muted/80"
+                  }`}
+                >
+                  <Icon className="w-4 h-4" />
+                  {cat.label}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Events list */}
           <div className="space-y-0">
-            {events.map((event, i) => (
+            {activeCategory.events.map((event, i) => (
               <div
                 key={event.name}
-                className="py-4 border-b border-border last:border-0 group"
-                style={{ animationDelay: `${(i + 2) * 80}ms` }}
+                className="py-4 border-b border-border last:border-0 group animate-fade-in"
+                style={{ animationDelay: `${i * 50}ms` }}
               >
                 <h3 className="font-semibold group-hover:text-primary transition-colors">{event.name}</h3>
                 <p className="text-sm text-muted-foreground mt-1">{event.role}</p>
               </div>
             ))}
           </div>
+
+          {/* Total count */}
+          <p className="text-xs text-muted-foreground mt-6 pt-4 border-t border-border">
+            {categories.reduce((acc, c) => acc + c.events.length, 0)}+ eventos entre conferências acadêmicas, tecnologia, divulgação e institucionais.
+          </p>
         </div>
       </div>
     </section>
