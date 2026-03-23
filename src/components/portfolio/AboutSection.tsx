@@ -45,7 +45,7 @@ const AboutSection = () => {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-8 pt-8 border-t border-border">
               {[
                 { value: "10", label: "Estados" },
-                { value: "50+", label: "Palestras / Painéis" },
+                { value: "30+", label: "Palestras / Painéis" },
                 { value: "8+", label: "Curadoria de Eventos" },
                 { value: "5+", label: "Anos de P&D" },
               ].map((stat) => (
