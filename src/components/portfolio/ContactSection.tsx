@@ -27,7 +27,7 @@ const ContactSection = () => {
           </a>
         </div>
 
-        <div className={`grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-xl mx-auto ${isVisible ? "animate-reveal-up delay-400" : "opacity-0"}`}>
+        <div className={`grid grid-cols-3 gap-4 max-w-md mx-auto ${isVisible ? "animate-reveal-up delay-400" : "opacity-0"}`}>
           <a
             href="https://www.linkedin.com/in/leonardocamargorossato/"
             target="_blank"
@@ -55,18 +55,11 @@ const ContactSection = () => {
             <Github className="w-5 h-5 text-primary" />
             <span className="text-xs text-muted-foreground">GitHub</span>
           </a>
-          <a
-            href="mailto:leo.c.rossato@gmail.com"
-            className="flex flex-col items-center gap-2 p-4 rounded-lg border border-border hover:border-primary/40 hover:bg-primary/5 transition-all"
-          >
-            <Mail className="w-5 h-5 text-primary" />
-            <span className="text-xs text-muted-foreground">E-mail</span>
-          </a>
         </div>
 
         <div className={`mt-6 text-base text-muted-foreground ${isVisible ? "animate-reveal-up delay-400" : "opacity-0"}`}>
-          <a href="mailto:leo.c.rossato@gmail.com" className="hover:text-primary transition-colors">
-            leo.c.rossato@gmail.com
+          <a href="mailto:leo.c.rossato@gmail.com" className="inline-flex items-center gap-2 hover:text-primary transition-colors">
+            <Mail className="w-4 h-4 text-primary" /> Email: leo.c.rossato@gmail.com
           </a>
         </div>
 
