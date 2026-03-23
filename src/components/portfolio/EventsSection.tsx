@@ -5,20 +5,6 @@ import { GraduationCap, Rocket, Globe, Building2 } from "lucide-react";
 
 const categories = [
   {
-    id: "academic",
-    label: "Acadêmicos",
-    icon: GraduationCap,
-    events: [
-      { name: "EOSBF 2025", role: "Encontro de Outono da SBF — Apresentação oral" },
-      { name: "EOSBF 2024", role: "Encontro de Outono da SBF — Apresentação de trabalho" },
-      { name: "ENFE 2024", role: "Encontro Nacional de Física Estatística — Apresentação de trabalho" },
-      { name: "CCS 2023", role: "Conference on Complex Systems — Apresentação oral internacional (bolsa YSI)" },
-      { name: "IIP Natal 2023", role: "Workshop on New Frontiers in Emergent Materials — Apresentação de trabalho" },
-      { name: "EOSBF 2023", role: "Encontro de Outono da SBF — Apresentação de trabalho" },
-      { name: "EIEMAT 2023", role: "Encontro Interinstitucional de Educação Matemática — Minicurso / palestra" },
-    ],
-  },
-  {
     id: "tech",
     label: "Tecnologia & Mercado",
     icon: Rocket,
@@ -30,6 +16,20 @@ const categories = [
       { name: "Latinoware 2025", role: "Itaipu — Curadoria e trilha quântica" },
       { name: "Expointer 2025", role: "Palestrante — Tecnologias quânticas" },
       { name: "DSS Curitiba 2024", role: "Data Science Summit — Palestrante" },
+    ],
+  },
+  {
+    id: "academic",
+    label: "Acadêmicos",
+    icon: GraduationCap,
+    events: [
+      { name: "EOSBF 2025", role: "Encontro de Outono da SBF — Apresentação oral" },
+      { name: "EOSBF 2024", role: "Encontro de Outono da SBF — Apresentação de trabalho" },
+      { name: "ENFE 2024", role: "Encontro Nacional de Física Estatística — Apresentação de trabalho" },
+      { name: "CCS 2023", role: "Conference on Complex Systems — Apresentação oral internacional (bolsa YSI)" },
+      { name: "IIP Natal 2023", role: "Workshop on New Frontiers in Emergent Materials — Apresentação de trabalho" },
+      { name: "EOSBF 2023", role: "Encontro de Outono da SBF — Apresentação de trabalho" },
+      { name: "EIEMAT 2023", role: "Encontro Interinstitucional de Educação Matemática — Minicurso / palestra" },
     ],
   },
   {
