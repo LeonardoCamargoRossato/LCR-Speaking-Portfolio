@@ -23,13 +23,13 @@ const categories = [
     label: "Tecnologia & Mercado",
     icon: Rocket,
     events: [
-      { name: "TechNow 2025", role: "SUCESU-RS — Palestrante" },
-      { name: "DSS Curitiba 2024", role: "Data Science Summit — Palestrante" },
-      { name: "DSS Curitiba 2025", role: "Data Science Summit — Curadoria + trilha quântica" },
       { name: "MVP Conference 2025", role: "Microsoft — Palestrante + curador" },
       { name: "Esquenta MVP POA 2025", role: "Palestrante + painelista" },
+      { name: "DSS Curitiba 2025", role: "Data Science Summit — Curadoria + trilha quântica" },
+      { name: "TechNow 2025", role: "SUCESU-RS — Palestrante" },
       { name: "Latinoware 2025", role: "Itaipu — Curadoria e trilha quântica" },
       { name: "Expointer 2025", role: "Palestrante — Tecnologias quânticas" },
+      { name: "DSS Curitiba 2024", role: "Data Science Summit — Palestrante" },
     ],
   },
   {
