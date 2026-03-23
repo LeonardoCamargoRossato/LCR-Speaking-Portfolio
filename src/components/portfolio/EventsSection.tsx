@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import stageImage from "@/assets/hero-stage.jpg";
-import { GraduationCap, Rocket, Globe, Building2 } from "lucide-react";
+import { GraduationCap, Rocket, Globe, Building2, Star, MapPin } from "lucide-react";
 
 const categories = [
   {
@@ -11,12 +11,12 @@ const categories = [
     events: [
       { name: "SecOps Summit Porto Alegre 2026", role: "Palestrante" },
       { name: "South Summit Porto Alegre 2026", role: "Palestrante" },
+      { name: "Expointer 2025", role: "Palestrante — Tecnologias quânticas" },
       { name: "MVP Conference 2025", role: "Microsoft — Palestrante + curador" },
       { name: "Esquenta MVP POA 2025", role: "Palestrante + painelista" },
       { name: "DSS Curitiba 2025", role: "Data Science Summit — Curadoria + trilha quântica" },
       { name: "TechNow 2025", role: "SUCESU-RS — Palestrante" },
       { name: "Latinoware 2025", role: "Itaipu — Curadoria e trilha quântica" },
-      { name: "Expointer 2025", role: "Palestrante — Tecnologias quânticas" },
       { name: "DSS Curitiba 2024", role: "Data Science Summit — Palestrante" },
     ],
   },
@@ -58,7 +58,47 @@ const categories = [
       { name: "Inauguração LACQ UFRGS 2024", role: "Palestrante" },
     ],
   },
+  {
+    id: "highlights",
+    label: "Eventos Destaque",
+    icon: Star,
+    events: [
+      { name: "South Summit 2026", role: "Porto Alegre, RS" },
+      { name: "SecOps Summit 2026", role: "Porto Alegre, RS" },
+      { name: "Expointer 2025", role: "Porto Alegre, RS" },
+      { name: "MVP Conference 2025", role: "São Paulo, SP" },
+      { name: "Latinoware / Itaipu 2025", role: "Foz do Iguaçu, PR" },
+      { name: "Data Science Summit (DSS) 2024 e 2025", role: "Curitiba, PR" },
+      { name: "CCS 2023", role: "Salvador, BA" },
+      { name: "EOSBF 2023, 2024, 2025", role: "Ouro Preto (MG), Florianópolis (SC), Belém (PA) — Principal congresso nacional de física" },
+      { name: "IIP Natal 2023", role: "Natal, RN" },
+    ],
+  },
+  {
+    id: "visits",
+    label: "Visitas Técnicas",
+    icon: MapPin,
+    events: [
+      { name: "Samsung", role: "Fábrica de Manaus" },
+      { name: "INDT", role: "Instituto Nokia de Tecnologia" },
+      { name: "Porto Digital", role: "Recife" },
+      { name: "Motorola / Centro de Computação", role: "Recife" },
+      { name: "Instituto Von Braun", role: "Campinas" },
+      { name: "Sirius (CNPEM)", role: "Acelerador de Partículas" },
+      { name: "SENAI CIMATEC", role: "Salvador" },
+      { name: "CBA", role: "Centro de Bionegócios da Amazônia" },
+    ],
+  },
 ];
+
+const tabDescriptions: Record<string, string> = {
+  highlights: "Principais eventos com participação como palestrante, painelista e curador.",
+  visits: "Participação em visitas técnicas e interação com empresas, centros de pesquisa e polos tecnológicos, acompanhando de perto o desenvolvimento de tecnologias avançadas no Brasil.",
+};
+
+const tabSubtitles: Record<string, string> = {
+  visits: "Conexão com Centros de Tecnologia e Inovação",
+};
 
 const EventsSection = () => {
   const { ref, isVisible } = useScrollReveal();
@@ -109,6 +149,14 @@ const EventsSection = () => {
               );
             })}
           </div>
+
+          {/* Tab subtitle & description */}
+          {tabSubtitles[activeTab] && (
+            <h3 className="font-semibold text-lg mb-2">{tabSubtitles[activeTab]}</h3>
+          )}
+          {tabDescriptions[activeTab] && (
+            <p className="text-muted-foreground text-sm mb-6">{tabDescriptions[activeTab]}</p>
+          )}
 
           {/* Events list */}
           <div className="space-y-0">

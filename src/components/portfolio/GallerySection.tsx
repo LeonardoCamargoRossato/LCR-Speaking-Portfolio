@@ -17,7 +17,10 @@ import galleryIip from "@/assets/gallery-iip.jpg";
 import galleryGca from "@/assets/gallery-gca.jpg";
 import galleryLatinoware2 from "@/assets/gallery-latinoware2.jpg";
 
-const photos = [
+import gallery5 from "@/assets/gallery-photo-5.jpg";
+import gallery6 from "@/assets/gallery-photo-6.jpg";
+
+const talkPhotos = [
   { src: heroSpeaking, alt: "TechNow — Computação Quântica: Que Futuro Esperamos?", label: "TechNow 2025" },
   { src: galleryQuantum, alt: "Palestra sobre Quantum Computing", label: "MVP Conference" },
   { src: galleryAlesp, alt: "Audiência pública na Assembleia Legislativa de São Paulo", label: "ALESP — São Paulo" },
@@ -34,9 +37,20 @@ const photos = [
   { src: galleryCcs, alt: "CCS 2023 — Apresentação de pesquisa", label: "CCS 2023" },
 ];
 
+const visitPhotos = [
+  { src: gallery5, alt: "Visita técnica a centro de tecnologia", label: "Visita Técnica" },
+  { src: gallery6, alt: "Visita a ecossistema de inovação", label: "Ecossistema de Inovação" },
+];
+
+type GalleryTab = "talks" | "visits";
+
 const GallerySection = () => {
   const { ref, isVisible } = useScrollReveal();
-  const [lightbox, setLightbox] = useState<number | null>(null);
+  const [lightbox, setLightbox] = useState<{ tab: GalleryTab; index: number } | null>(null);
+  const [activeTab, setActiveTab] = useState<GalleryTab>("talks");
+
+  const currentPhotos = activeTab === "talks" ? talkPhotos : visitPhotos;
+  const lightboxPhotos = lightbox?.tab === "talks" ? talkPhotos : visitPhotos;
 
   return (
     <>
@@ -47,16 +61,40 @@ const GallerySection = () => {
             <h2 className="font-display text-3xl md:text-4xl">Momentos em Palco</h2>
           </div>
 
+          {/* Tabs */}
+          <div className={`flex justify-center gap-3 mb-10 ${isVisible ? "animate-reveal-up delay-100" : "opacity-0"}`}>
+            <button
+              onClick={() => setActiveTab("talks")}
+              className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
+                activeTab === "talks"
+                  ? "bg-primary text-primary-foreground shadow-md"
+                  : "bg-muted text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              Palestras e Eventos
+            </button>
+            <button
+              onClick={() => setActiveTab("visits")}
+              className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
+                activeTab === "visits"
+                  ? "bg-primary text-primary-foreground shadow-md"
+                  : "bg-muted text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              Visitas Técnicas & Ecossistemas
+            </button>
+          </div>
+
           {/* Masonry-style grid */}
           <div className="columns-2 md:columns-3 gap-4 space-y-4">
-            {photos.map((photo, i) => (
+            {currentPhotos.map((photo, i) => (
               <div
-                key={i}
+                key={`${activeTab}-${i}`}
                 className={`break-inside-avoid group cursor-pointer ${
                   isVisible ? "animate-reveal-up" : "opacity-0"
                 }`}
                 style={{ animationDelay: `${(i % 6) * 80 + 100}ms` }}
-                onClick={() => setLightbox(i)}
+                onClick={() => setLightbox({ tab: activeTab, index: i })}
               >
                 <div className="relative rounded-xl overflow-hidden">
                   <img
@@ -78,7 +116,7 @@ const GallerySection = () => {
       </section>
 
       {/* Lightbox */}
-      {lightbox !== null && (
+      {lightbox !== null && lightboxPhotos[lightbox.index] && (
         <div
           className="fixed inset-0 z-[100] bg-background/90 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in"
           onClick={() => setLightbox(null)}
@@ -91,13 +129,13 @@ const GallerySection = () => {
             <X className="w-6 h-6" />
           </button>
           <img
-            src={photos[lightbox].src}
-            alt={photos[lightbox].alt}
+            src={lightboxPhotos[lightbox.index].src}
+            alt={lightboxPhotos[lightbox.index].alt}
             className="max-w-full max-h-[85vh] object-contain rounded-lg"
             onClick={(e) => e.stopPropagation()}
           />
           <p className="absolute bottom-8 left-1/2 -translate-x-1/2 text-sm text-muted-foreground">
-            {photos[lightbox].label}
+            {lightboxPhotos[lightbox.index].label}
           </p>
         </div>
       )}

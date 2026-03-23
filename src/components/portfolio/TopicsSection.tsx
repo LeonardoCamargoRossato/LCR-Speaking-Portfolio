@@ -1,31 +1,36 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { Atom, BarChart3, Cpu, Radar, GraduationCap } from "lucide-react";
+import { Atom, BarChart3, Cpu, Radar, GraduationCap, Brain } from "lucide-react";
 
 const topics = [
   {
     icon: Atom,
     title: "Tecnologias Quânticas",
-    description: "Panorama, oportunidades, riscos e aplicações emergentes em setores estratégicos",
+    description: "Panorama, aplicações e impactos estratégicos em diferentes setores",
   },
   {
     icon: Cpu,
     title: "Computação Quântica",
-    description: "Como aproximar ciência de fronteira do setor produtivo e industrial",
+    description: "Do conceito à aplicação: como empresas e instituições podem se preparar",
   },
   {
     icon: BarChart3,
     title: "Ciência de Dados",
-    description: "Modelagem, correlações, redes e tomada de decisão baseada em dados",
+    description: "Como transformar dados em decisões estratégicas",
   },
   {
     icon: Radar,
     title: "Fusão Sensorial",
-    description: "Arquiteturas de sensores, integração de dados e validação de soluções",
+    description: "Integração de sensores e validação de sistemas complexos",
+  },
+  {
+    icon: Brain,
+    title: "IA e Tecnologias Emergentes",
+    description: "Tendências, oportunidades e impacto no futuro da tecnologia",
   },
   {
     icon: GraduationCap,
     title: "Formação de Talentos",
-    description: "Desenvolvimento de competências em áreas de alta complexidade tecnológica",
+    description: "Como preparar profissionais para áreas de alta complexidade tecnológica",
   },
 ];
 
