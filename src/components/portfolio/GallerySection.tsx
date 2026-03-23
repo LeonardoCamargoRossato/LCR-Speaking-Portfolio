@@ -17,8 +17,6 @@ import galleryIip from "@/assets/gallery-iip.jpg";
 import galleryGca from "@/assets/gallery-gca.jpg";
 import galleryLatinoware2 from "@/assets/gallery-latinoware2.jpg";
 
-import gallery5 from "@/assets/gallery-photo-5.jpg";
-import gallery6 from "@/assets/gallery-photo-6.jpg";
 
 const talkPhotos = [
   { src: heroSpeaking, alt: "TechNow — Computação Quântica: Que Futuro Esperamos?", label: "TechNow 2025" },
@@ -38,8 +36,8 @@ const talkPhotos = [
 ];
 
 const visitPhotos = [
-  { src: gallery5, alt: "Visita técnica a centro de tecnologia", label: "Visita Técnica" },
-  { src: gallery6, alt: "Visita a ecossistema de inovação", label: "Ecossistema de Inovação" },
+  { src: galleryFotonLacq, alt: "Visita técnica a centro de tecnologia", label: "Visita Técnica" },
+  { src: galleryFotonEstados, alt: "Visita a ecossistema de inovação", label: "Ecossistema de Inovação" },
 ];
 
 type GalleryTab = "talks" | "visits";
