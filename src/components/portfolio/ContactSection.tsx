@@ -25,29 +25,49 @@ const ContactSection = () => {
             <Mail className="w-4 h-4" />
             Enviar E-mail
           </a>
-          <a
-            href="https://linkedin.com/in/leonardocamargorossato"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 border border-foreground/20 text-foreground rounded-lg hover:border-foreground/40 transition-colors active:scale-[0.97]"
-          >
-            <Linkedin className="w-4 h-4" />
-            LinkedIn
-          </a>
         </div>
 
-        <div className={`flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground ${isVisible ? "animate-reveal-up delay-400" : "opacity-0"}`}>
-          <span className="inline-flex items-center gap-2">
-            <MapPin className="w-4 h-4" /> São José dos Campos — SP
-          </span>
+        <div className={`grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-xl mx-auto ${isVisible ? "animate-reveal-up delay-400" : "opacity-0"}`}>
+          <a
+            href="https://www.linkedin.com/in/leonardocamargorossato/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col items-center gap-2 p-4 rounded-lg border border-border hover:border-primary/40 hover:bg-primary/5 transition-all"
+          >
+            <Linkedin className="w-5 h-5 text-primary" />
+            <span className="text-xs text-muted-foreground">LinkedIn</span>
+          </a>
+          <a
+            href="https://www.instagram.com/leonardo.camargo.rossato"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col items-center gap-2 p-4 rounded-lg border border-border hover:border-primary/40 hover:bg-primary/5 transition-all"
+          >
+            <Instagram className="w-5 h-5 text-primary" />
+            <span className="text-xs text-muted-foreground">Instagram</span>
+          </a>
           <a
             href="https://github.com/LeonardoCamargoRossato"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 hover:text-foreground transition-colors"
+            className="flex flex-col items-center gap-2 p-4 rounded-lg border border-border hover:border-primary/40 hover:bg-primary/5 transition-all"
           >
-            <Github className="w-4 h-4" /> GitHub
+            <Github className="w-5 h-5 text-primary" />
+            <span className="text-xs text-muted-foreground">GitHub</span>
           </a>
+          <a
+            href="mailto:leo.c.rossato@gmail.com"
+            className="flex flex-col items-center gap-2 p-4 rounded-lg border border-border hover:border-primary/40 hover:bg-primary/5 transition-all"
+          >
+            <Mail className="w-5 h-5 text-primary" />
+            <span className="text-xs text-muted-foreground">E-mail</span>
+          </a>
+        </div>
+
+        <div className={`mt-8 text-sm text-muted-foreground ${isVisible ? "animate-reveal-up delay-400" : "opacity-0"}`}>
+          <span className="inline-flex items-center gap-2">
+            <MapPin className="w-4 h-4" /> São José dos Campos — SP
+          </span>
         </div>
       </div>
     </section>
