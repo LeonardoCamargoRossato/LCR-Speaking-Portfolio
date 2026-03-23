@@ -164,16 +164,36 @@ const EventsSection = () => {
 
           {/* Events list */}
           <div className="space-y-0">
-            {activeCategory.events.map((event, i) => (
-              <div
-                key={event.name}
-                className="py-4 border-b border-border last:border-0 group animate-fade-in"
-                style={{ animationDelay: `${i * 50}ms` }}
-              >
-                <h3 className="font-semibold group-hover:text-primary transition-colors">{event.name}</h3>
-                <p className="text-sm text-muted-foreground mt-1">{event.role}</p>
-              </div>
-            ))}
+            {'sections' in activeCategory && activeCategory.sections ? (
+              activeCategory.sections.map((section: { title: string; events: { name: string; role: string }[] }, si: number) => (
+                <div key={section.title}>
+                  <h3 className="font-semibold text-primary text-sm uppercase tracking-wide mt-6 mb-3 first:mt-0">
+                    {section.title}
+                  </h3>
+                  {section.events.map((event, i) => (
+                    <div
+                      key={event.name}
+                      className="py-4 border-b border-border last:border-0 group animate-fade-in"
+                      style={{ animationDelay: `${(si * 10 + i) * 50}ms` }}
+                    >
+                      <h3 className="font-semibold group-hover:text-primary transition-colors">{event.name}</h3>
+                      <p className="text-sm text-muted-foreground mt-1">{event.role}</p>
+                    </div>
+                  ))}
+                </div>
+              ))
+            ) : (
+              activeCategory.events.map((event, i) => (
+                <div
+                  key={event.name}
+                  className="py-4 border-b border-border last:border-0 group animate-fade-in"
+                  style={{ animationDelay: `${i * 50}ms` }}
+                >
+                  <h3 className="font-semibold group-hover:text-primary transition-colors">{event.name}</h3>
+                  <p className="text-sm text-muted-foreground mt-1">{event.role}</p>
+                </div>
+              ))
+            )}
           </div>
 
           {/* Total count */}
