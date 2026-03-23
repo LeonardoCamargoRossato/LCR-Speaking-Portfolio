@@ -126,7 +126,7 @@ const EventsSection = () => {
 
           {/* Total count */}
           <p className="text-xs text-muted-foreground mt-6 pt-4 border-t border-border">
-            {categories.reduce((acc, c) => acc + c.events.length, 0)}+ eventos entre conferências acadêmicas, tecnologia, divulgação e institucionais.
+            30+ palestras entre conferências acadêmicas, tecnologia, divulgação e institucionais.
           </p>
         </div>
       </div>
