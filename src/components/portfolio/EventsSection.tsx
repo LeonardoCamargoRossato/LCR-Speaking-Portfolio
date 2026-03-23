@@ -9,6 +9,8 @@ const categories = [
     label: "Tecnologia & Mercado",
     icon: Rocket,
     events: [
+      { name: "SecOps Summit Porto Alegre 2026", role: "Palestrante" },
+      { name: "South Summit Porto Alegre 2026", role: "Palestrante" },
       { name: "MVP Conference 2025", role: "Microsoft — Palestrante + curador" },
       { name: "Esquenta MVP POA 2025", role: "Palestrante + painelista" },
       { name: "DSS Curitiba 2025", role: "Data Science Summit — Curadoria + trilha quântica" },
@@ -124,7 +126,7 @@ const EventsSection = () => {
 
           {/* Total count */}
           <p className="text-xs text-muted-foreground mt-6 pt-4 border-t border-border">
-            {categories.reduce((acc, c) => acc + c.events.length, 0)}+ eventos entre conferências acadêmicas, tecnologia, divulgação e institucionais.
+            30+ palestras entre conferências acadêmicas, tecnologia, divulgação e institucionais.
           </p>
         </div>
       </div>
