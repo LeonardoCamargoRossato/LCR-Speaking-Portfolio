@@ -9,6 +9,8 @@ const categories = [
     label: "Tecnologia & Mercado",
     icon: Rocket,
     events: [
+      { name: "SecOps Summit Porto Alegre 2026", role: "Palestrante" },
+      { name: "South Summit Porto Alegre 2026", role: "Palestrante" },
       { name: "MVP Conference 2025", role: "Microsoft — Palestrante + curador" },
       { name: "Esquenta MVP POA 2025", role: "Palestrante + painelista" },
       { name: "DSS Curitiba 2025", role: "Data Science Summit — Curadoria + trilha quântica" },
