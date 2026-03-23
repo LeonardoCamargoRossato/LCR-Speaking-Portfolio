@@ -36,8 +36,8 @@ const talkPhotos = [
 ];
 
 const visitPhotos = [
-  { src: gallery5, alt: "Visita técnica a centro de tecnologia", label: "Visita Técnica" },
-  { src: gallery6, alt: "Visita a ecossistema de inovação", label: "Ecossistema de Inovação" },
+  { src: galleryFotonLacq, alt: "Visita técnica a centro de tecnologia", label: "Visita Técnica" },
+  { src: galleryFotonEstados, alt: "Visita a ecossistema de inovação", label: "Ecossistema de Inovação" },
 ];
 
 type GalleryTab = "talks" | "visits";
