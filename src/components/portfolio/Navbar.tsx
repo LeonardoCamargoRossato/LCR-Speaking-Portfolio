@@ -6,7 +6,7 @@ const links = [
   { href: "#temas", label: "Temas" },
   { href: "#eventos", label: "Eventos" },
   { href: "#galeria", label: "Galeria" },
-  { href: "#publicacoes", label: "Publicações" },
+  { href: "#publicacoes", label: "Projetos" },
   { href: "#contato", label: "Contato" },
 ];
 

@@ -39,6 +39,9 @@ const AboutSection = () => {
               <p>
                 Doutorando em Engenharia pelo <strong className="text-foreground">ITA</strong>, Mestre em Física pela <strong className="text-foreground">UFRGS</strong> e Bacharel em Física pela <strong className="text-foreground">UFSM</strong>. Selecionado como único brasileiro entre sete pesquisadores apoiados mundialmente para o CCS 2023.
               </p>
+              <p>
+                Atuação em eventos tecnológicos, corporativos e acadêmicos em mais de 10 estados brasileiros.
+              </p>
             </div>
 
             {/* Stats */}
