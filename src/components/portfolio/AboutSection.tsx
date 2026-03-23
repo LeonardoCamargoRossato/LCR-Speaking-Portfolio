@@ -31,7 +31,7 @@ const AboutSection = () => {
             <p className="text-primary/80 text-sm italic mb-6">Entendendo conceitos complexos de forma simples</p>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
-                Desenvolvedor de tecnologias de ponta — quânticas e híbridas. Físico, pesquisador e palestrante atuando na interseção entre pesquisa científica, desenvolvimento tecnológico e aplicações estratégicas.
+                Desenvolvedor de tecnologias de ponta — quânticas e híbridas. Físico, pesquisador e palestrante que conecta ciência, tecnologia e aplicações reais.
               </p>
               <p>
                 Presidente do <strong className="text-foreground">Foton — Instituto de Ciências e Tecnologias Quânticas</strong>, liderando projetos de P&D em otimização, sensores de alta precisão e criptografia quântica. Cofundador da <strong className="text-foreground">LACQ Feynman</strong>, movimento nacional de Ligas Acadêmicas de Computação Quântica, conectando universidades e o setor produtivo em todo o Brasil.
