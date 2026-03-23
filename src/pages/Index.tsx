@@ -6,11 +6,13 @@ import EventsSection from "@/components/portfolio/EventsSection";
 import GallerySection from "@/components/portfolio/GallerySection";
 import PublicationsSection from "@/components/portfolio/PublicationsSection";
 import ContactSection from "@/components/portfolio/ContactSection";
+import FloatingContactButton from "@/components/portfolio/FloatingContactButton";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
       <Navbar />
+      <FloatingContactButton />
       <HeroSection />
       <AboutSection />
       <TopicsSection />

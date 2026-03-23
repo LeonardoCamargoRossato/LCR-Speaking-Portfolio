@@ -64,7 +64,13 @@ const ContactSection = () => {
           </a>
         </div>
 
-        <div className={`mt-8 text-sm text-muted-foreground ${isVisible ? "animate-reveal-up delay-400" : "opacity-0"}`}>
+        <div className={`mt-6 text-base text-muted-foreground ${isVisible ? "animate-reveal-up delay-400" : "opacity-0"}`}>
+          <a href="mailto:leo.c.rossato@gmail.com" className="hover:text-primary transition-colors">
+            leo.c.rossato@gmail.com
+          </a>
+        </div>
+
+        <div className={`mt-4 text-sm text-muted-foreground ${isVisible ? "animate-reveal-up delay-400" : "opacity-0"}`}>
           <span className="inline-flex items-center gap-2">
             <MapPin className="w-4 h-4" /> São José dos Campos — SP
           </span>
