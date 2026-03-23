@@ -10,7 +10,7 @@ const ContactSection = () => {
         <div className={`${isVisible ? "animate-reveal-up" : "opacity-0"}`}>
           <p className="text-primary font-medium tracking-widest uppercase text-sm mb-3">Contato</p>
           <h2 className="font-display text-3xl md:text-5xl mb-4 leading-tight">
-            Vamos conversar sobre o futuro?
+            A era quântica já começou. Sua organização já está preparada?
           </h2>
           <p className="text-muted-foreground text-lg mb-10 max-w-lg mx-auto">
             Disponível para palestras, workshops, consultorias e colaborações em pesquisa.
