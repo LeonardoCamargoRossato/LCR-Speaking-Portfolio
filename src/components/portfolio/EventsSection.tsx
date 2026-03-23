@@ -48,12 +48,12 @@ const categories = [
     label: "Institucional & Universidades",
     icon: Building2,
     events: [
-      { name: "Aula Magna UNISINOS 2025", role: "PPG Administração — Palestrante" },
-      { name: "Semana LACQ UFRGS 2025", role: "Computação Quântica — Organização + palestras" },
-      { name: "Jornada Foton–LACQ Tecnopuc 2025", role: "Tecnologias Quânticas — Palestrante recorrente" },
-      { name: "Inauguração LACQ UFRGS 2024", role: "Palestrante" },
-      { name: "Inauguração LACQ PUCRS 2025", role: "Palestrante" },
       { name: "Inauguração LACQ USP 2025", role: "Palestrante" },
+      { name: "Inauguração LACQ PUCRS 2025", role: "Palestrante" },
+      { name: "Jornada Foton–LACQ Tecnopuc 2025", role: "Tecnologias Quânticas — Palestrante recorrente" },
+      { name: "Semana LACQ UFRGS 2025", role: "Computação Quântica — Organização + palestras" },
+      { name: "Aula Magna UNISINOS 2025", role: "PPG Administração — Palestrante" },
+      { name: "Inauguração LACQ UFRGS 2024", role: "Palestrante" },
     ],
   },
 ];
