@@ -60,7 +60,7 @@ const categories = [
 
 const EventsSection = () => {
   const { ref, isVisible } = useScrollReveal();
-  const [activeTab, setActiveTab] = useState("academic");
+  const [activeTab, setActiveTab] = useState("tech");
 
   const activeCategory = categories.find((c) => c.id === activeTab)!;
 
