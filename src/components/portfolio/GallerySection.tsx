@@ -16,6 +16,10 @@ import galleryAlesp from "@/assets/gallery-alesp.jpg";
 import galleryIip from "@/assets/gallery-iip.jpg";
 import galleryGca from "@/assets/gallery-gca.jpg";
 import galleryLatinoware2 from "@/assets/gallery-latinoware2.jpg";
+import galleryAutocom1 from "@/assets/gallery-autocom1.jpg";
+import galleryAutocom2 from "@/assets/gallery-autocom2.jpg";
+import gallerySouthsummit1 from "@/assets/gallery-southsummit1.jpg";
+import gallerySouthsummit2 from "@/assets/gallery-southsummit2.jpg";
 
 
 const talkPhotos = [
