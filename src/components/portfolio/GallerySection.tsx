@@ -37,6 +37,10 @@ const talkPhotos = [
   { src: galleryIta, alt: "Palestra sobre Computação Quântica no ITA", label: "ITA" },
   { src: gallerySolvay, alt: "Apresentação na PUCRS — Conferência Solvay", label: "PUCRS" },
   { src: galleryCcs, alt: "CCS 2023 — Apresentação de pesquisa", label: "CCS 2023" },
+  { src: gallerySouthsummit1, alt: "South Summit Brazil — Porto Alegre", label: "South Summit 2026" },
+  { src: gallerySouthsummit2, alt: "Painel South Summit — Digital Sovereignty and Quantum Computing", label: "South Summit 2026" },
+  { src: galleryAutocom1, alt: "Autocom Summit — Palestra sobre complexidade", label: "Autocom Summit 2026" },
+  { src: galleryAutocom2, alt: "Autocom Summit — Palco principal", label: "Autocom Summit 2026" },
 ];
 
 const visitPhotos = [
