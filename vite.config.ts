@@ -5,6 +5,9 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  // GitHub Pages serves project sites under /LCR-Speaking-Portfolio/.
+  // Keep the Lovable preview and local development rooted at /.
+  base: process.env.GITHUB_PAGES === "true" ? "/LCR-Speaking-Portfolio/" : "/",
   server: {
     host: "::",
     port: 8080,
