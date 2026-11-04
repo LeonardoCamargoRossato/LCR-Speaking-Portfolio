@@ -1,0 +1,4 @@
+export const publications = [
+{ title:"Analysis of socioeconomic indicators in the United States, Brazil, and other Latin American countries using econophysics techniques", journal:"The European Physical Journal B", year:2024, authors:"Leonardo C. Rossato, José Roberto Iglesias e Sebastian Gonçalves", doi:"10.1140/epjb/s10051-024-00766-5" },
+{ title:"The Ising bilayer honeycomb lattice: A cluster mean-field study", journal:"Physica A: Statistical Mechanics and its Applications", year:2023, authors:"Leonardo C. Rossato, F. M. Zimmer, C. V. Morais e M. Schmidt", doi:"10.1016/j.physa.2023.128778" }
+];

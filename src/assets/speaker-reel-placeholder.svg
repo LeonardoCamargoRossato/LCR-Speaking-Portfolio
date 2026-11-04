@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="t d">
+<title id="t">Leonardo em Palco — capa provisória</title><desc id="d">Composição gráfica abstrata, não fotografia de apresentação.</desc>
+<defs><linearGradient id="g" x2="1" y2="1"><stop stop-color="#1e2530"/><stop offset="1" stop-color="#0a1018"/></linearGradient></defs>
+<rect width="960" height="540" fill="url(#g)"/><g stroke="#d39d4d" fill="none" opacity=".2"><circle cx="790" cy="120" r="230"/><circle cx="790" cy="120" r="160"/><circle cx="790" cy="120" r="90"/><path d="M0 390 Q270 270 520 370 T960 300"/></g><path d="M72 83 V140" stroke="#ecc17c" stroke-width="4"/>
+<text x="95" y="109" font-family="Arial,sans-serif" font-size="18" fill="#eac78c" letter-spacing="5">LCR SPEAKING PORTFOLIO</text>
+<text x="72" y="260" font-family="Georgia,serif" font-size="72" fill="#f1ede5">Leonardo</text>
+<text x="72" y="340" font-family="Georgia,serif" font-size="72" fill="#f1ede5">em Palco</text>
+<text x="76" y="400" font-family="Arial,sans-serif" font-size="22" fill="#b7b6b3">Vídeo profissional em preparação</text>
+<path d="M72 443 H340" stroke="#ecc17c" stroke-width="3"/></svg>

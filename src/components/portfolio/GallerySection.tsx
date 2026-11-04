@@ -1,152 +1,27 @@
-import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { useState } from "react";
-import { X } from "lucide-react";
-
-import galleryFotonLacq from "@/assets/gallery-foton-lacq.jpg";
-import galleryCcs from "@/assets/gallery-ccs.jpg";
-import gallerySelfie from "@/assets/gallery-selfie.jpg";
-import galleryLatinoware from "@/assets/gallery-latinoware.jpg";
-import galleryFotonEstados from "@/assets/gallery-foton-estados.jpg";
-import galleryIta from "@/assets/gallery-ita.jpg";
-import galleryQuantum from "@/assets/gallery-quantum.jpg";
-import gallerySolvay from "@/assets/gallery-solvay.jpg";
-import heroSpeaking from "@/assets/hero-speaking.jpg";
-import heroStage from "@/assets/hero-stage.jpg";
-import galleryAlesp from "@/assets/gallery-alesp.jpg";
-import galleryIip from "@/assets/gallery-iip.jpg";
-import galleryGca from "@/assets/gallery-gca.jpg";
-import galleryLatinoware2 from "@/assets/gallery-latinoware2.jpg";
-import galleryAutocom1 from "@/assets/gallery-autocom1.jpg";
-import galleryAutocom2 from "@/assets/gallery-autocom2.jpg";
-import gallerySouthsummit1 from "@/assets/gallery-southsummit1.jpg";
-import gallerySouthsummit2 from "@/assets/gallery-southsummit2.jpg";
-
-
-const talkPhotos = [
-  { src: heroSpeaking, alt: "TechNow — Computação Quântica: Que Futuro Esperamos?", label: "TechNow 2025" },
-  { src: galleryQuantum, alt: "Palestra sobre Quantum Computing", label: "MVP Conference" },
-  { src: galleryAlesp, alt: "Audiência pública na Assembleia Legislativa de São Paulo", label: "ALESP — São Paulo" },
-  { src: galleryFotonLacq, alt: "Evento Foton + LACQ na PUCRS", label: "Foton + LACQ — PUCRS" },
-  { src: heroStage, alt: "Palestra em grande evento de tecnologia", label: "DSS Curitiba" },
-  { src: galleryIip, alt: "Apresentação acadêmica em auditório", label: "IIP — Natal" },
-  { src: gallerySelfie, alt: "Selfie com participantes após palestra", label: "Workshop LACQ" },
-  { src: galleryLatinoware, alt: "Latinoware 2025 — Congresso Latino-americano", label: "Latinoware 2025" },
-  { src: galleryGca, alt: "Apresentação sobre Gravitational Cluster Algorithm", label: "Pesquisa — GCA" },
-  { src: galleryFotonEstados, alt: "Apresentação ICTQ Foton — 11 estados", label: "ICTQ Foton" },
-  { src: galleryLatinoware2, alt: "Latinoware 2025 — sala cheia", label: "Latinoware 2025" },
-  { src: galleryIta, alt: "Palestra sobre Computação Quântica no ITA", label: "ITA" },
-  { src: gallerySolvay, alt: "Apresentação na PUCRS — Conferência Solvay", label: "PUCRS" },
-  { src: galleryCcs, alt: "CCS 2023 — Apresentação de pesquisa", label: "CCS 2023" },
-  { src: gallerySouthsummit1, alt: "South Summit Brazil — Porto Alegre", label: "South Summit 2026" },
-  { src: gallerySouthsummit2, alt: "Painel South Summit — Digital Sovereignty and Quantum Computing", label: "South Summit 2026" },
-  { src: galleryAutocom1, alt: "Autocom Summit — Palestra sobre complexidade", label: "Autocom Summit 2026" },
-  { src: galleryAutocom2, alt: "Autocom Summit — Palco principal", label: "Autocom Summit 2026" },
-];
-
-const visitPhotos = [
-  { src: galleryFotonLacq, alt: "Visita técnica a centro de tecnologia", label: "Visita Técnica" },
-  { src: galleryFotonEstados, alt: "Visita a ecossistema de inovação", label: "Ecossistema de Inovação" },
-];
-
-type GalleryTab = "talks" | "visits";
-
-const GallerySection = () => {
-  const { ref, isVisible } = useScrollReveal();
-  const [lightbox, setLightbox] = useState<{ tab: GalleryTab; index: number } | null>(null);
-  const [activeTab, setActiveTab] = useState<GalleryTab>("talks");
-
-  const currentPhotos = activeTab === "talks" ? talkPhotos : visitPhotos;
-  const lightboxPhotos = lightbox?.tab === "talks" ? talkPhotos : visitPhotos;
-
-  return (
-    <>
-      <section id="galeria" className="py-24 md:py-32" ref={ref}>
-        <div className="container max-w-6xl mx-auto px-6">
-          <div className={`text-center mb-16 ${isVisible ? "animate-reveal-up" : "opacity-0"}`}>
-            <p className="text-primary font-medium tracking-widest uppercase text-sm mb-3">Galeria</p>
-            <h2 className="font-display text-3xl md:text-4xl">Momentos em Palco</h2>
-          </div>
-
-          {/* Tabs */}
-          <div className={`flex justify-center gap-3 mb-10 ${isVisible ? "animate-reveal-up delay-100" : "opacity-0"}`}>
-            <button
-              onClick={() => setActiveTab("talks")}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
-                activeTab === "talks"
-                  ? "bg-primary text-primary-foreground shadow-md"
-                  : "bg-muted text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              Palestras e Eventos
-            </button>
-            <button
-              onClick={() => setActiveTab("visits")}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
-                activeTab === "visits"
-                  ? "bg-primary text-primary-foreground shadow-md"
-                  : "bg-muted text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              Visitas Técnicas & Ecossistemas
-            </button>
-          </div>
-
-          {/* Masonry-style grid */}
-          <div className="columns-2 md:columns-3 gap-4 space-y-4">
-            {currentPhotos.map((photo, i) => (
-              <div
-                key={`${activeTab}-${i}`}
-                className={`break-inside-avoid group cursor-pointer ${
-                  isVisible ? "animate-reveal-up" : "opacity-0"
-                }`}
-                style={{ animationDelay: `${(i % 6) * 80 + 100}ms` }}
-                onClick={() => setLightbox({ tab: activeTab, index: i })}
-              >
-                <div className="relative rounded-xl overflow-hidden">
-                  <img
-                    src={photo.src}
-                    alt={photo.alt}
-                    className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-background/0 group-hover:bg-background/50 transition-colors duration-300 flex items-end p-4">
-                    <span className="text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-2 group-hover:translate-y-0">
-                      {photo.label}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Lightbox */}
-      {lightbox !== null && lightboxPhotos[lightbox.index] && (
-        <div
-          className="fixed inset-0 z-[100] bg-background/90 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in"
-          onClick={() => setLightbox(null)}
-        >
-          <button
-            onClick={() => setLightbox(null)}
-            className="absolute top-6 right-6 p-2 text-foreground hover:text-primary transition-colors"
-            aria-label="Fechar"
-          >
-            <X className="w-6 h-6" />
-          </button>
-          <img
-            src={lightboxPhotos[lightbox.index].src}
-            alt={lightboxPhotos[lightbox.index].alt}
-            className="max-w-full max-h-[85vh] object-contain rounded-lg"
-            onClick={(e) => e.stopPropagation()}
-          />
-          <p className="absolute bottom-8 left-1/2 -translate-x-1/2 text-sm text-muted-foreground">
-            {lightboxPhotos[lightbox.index].label}
-          </p>
-        </div>
-      )}
-    </>
-  );
-};
-
-export default GallerySection;
+import { useEffect, useState } from "react";
+import { galleryPhotos, researchGalleryIndexes } from "@/data/gallery";
+import { ChevronLeft, ChevronRight, Expand, X } from "lucide-react";
+type Filter = "all" | "research";
+export default function GallerySection(){
+ const [filter,setFilter]=useState<Filter>("all");const [count,setCount]=useState(8);const [active,setActive]=useState<number|null>(null);
+ const photos=filter==="all"?galleryPhotos:galleryPhotos.filter((_,index)=>researchGalleryIndexes.includes(index));
+ useEffect(()=>{if(active===null)return;const previous=document.body.style.overflow;document.body.style.overflow="hidden";
+ const onKey=(event:KeyboardEvent)=>{if(event.key==="Escape")setActive(null);if(event.key==="ArrowRight")setActive(i=>i===null?null:(i+1)%photos.length);if(event.key==="ArrowLeft")setActive(i=>i===null?null:(i-1+photos.length)%photos.length);};
+ document.addEventListener("keydown",onKey);return ()=>{document.body.style.overflow=previous;document.removeEventListener("keydown",onKey);};},[active,photos.length]);
+ const choose=(next:Filter)=>{setFilter(next);setCount(8);setActive(null);};
+ return <><section id="galeria" className="scroll-mt-20 py-20 md:py-24"><div className="container mx-auto max-w-6xl px-5 sm:px-6">
+ <div className="mb-9 flex flex-col justify-between gap-4 sm:flex-row sm:items-end"><div><p className="mb-3 text-xs font-semibold uppercase tracking-wider text-primary">Galeria profissional</p><h2 className="font-display text-3xl md:text-4xl">Momentos em Palco</h2><p className="mt-3 text-sm text-muted-foreground">Fotografias reais de palestras, eventos e participações institucionais.</p></div>
+ <div role="group" aria-label="Filtrar galeria" className="flex flex-wrap gap-2"><button type="button" aria-pressed={filter==="all"} onClick={()=>choose("all")} className={"rounded-full px-4 py-2 text-sm "+(filter==="all"?"bg-primary text-primary-foreground":"bg-muted text-foreground")}>Todos os registros</button><button type="button" aria-pressed={filter==="research"} onClick={()=>choose("research")} className={"rounded-full px-4 py-2 text-sm "+(filter==="research"?"bg-primary text-primary-foreground":"bg-muted text-foreground")}>Pesquisa e instituições</button></div></div>
+ <div className="columns-2 gap-3 space-y-3 sm:columns-3 sm:gap-4 sm:space-y-4 lg:columns-4">{photos.slice(0,count).map((photo,index)=><button key={photo.src+index} type="button" onClick={()=>setActive(index)} aria-label={"Ampliar fotografia: "+photo.label} className="group relative block w-full break-inside-avoid overflow-hidden rounded-xl border border-border text-left focus-visible:outline">
+ <img src={photo.src} alt={photo.alt} loading="lazy" decoding="async" className="h-auto w-full object-cover transition-transform group-hover:scale-[1.04]"/>
+ <span className="absolute inset-x-0 bottom-0 flex items-end gap-2 bg-gradient-to-t from-black/90 to-transparent px-3 pb-3 pt-10 text-xs leading-snug text-white"><span className="flex-1">{photo.label}</span><Expand className="h-4 w-4 shrink-0"/></span></button>)}</div>
+ {count<photos.length&&<div className="mt-9 text-center"><button type="button" onClick={()=>setCount(n=>n+6)} className="rounded-lg border border-primary/50 px-6 py-3 text-sm font-semibold text-primary hover:bg-primary/10">Carregar mais fotografias ({photos.length-count} restantes)</button></div>}
+ </div></section>
+ {active!==null&&photos[active]&&<div role="dialog" aria-modal="true" aria-label="Fotografia ampliada" onClick={()=>setActive(null)} className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-3 backdrop-blur-md sm:p-6">
+ <button type="button" aria-label="Fechar" onClick={()=>setActive(null)} className="absolute right-4 top-4 z-10 rounded-full bg-background/75 p-2 text-white"><X className="h-6 w-6"/></button>
+ <button type="button" aria-label="Anterior" onClick={e=>{e.stopPropagation();setActive((active-1+photos.length)%photos.length);}} className="absolute left-2 z-10 rounded-full bg-black/70 p-2 text-white sm:left-6"><ChevronLeft className="h-6 w-6"/></button>
+ <img src={photos[active].src} alt={photos[active].alt} onClick={e=>e.stopPropagation()} className="max-h-[78vh] max-w-[calc(100%-5rem)] rounded-lg object-contain sm:max-w-[86vw]"/>
+ <button type="button" aria-label="Próxima" onClick={e=>{e.stopPropagation();setActive((active+1)%photos.length);}} className="absolute right-2 z-10 rounded-full bg-black/70 p-2 text-white sm:right-6"><ChevronRight className="h-6 w-6"/></button>
+ <p className="absolute bottom-4 left-12 right-12 text-center text-xs text-white/85 sm:text-sm">{photos[active].label} · {active+1}/{photos.length}</p>
+ </div>}</>;
+}

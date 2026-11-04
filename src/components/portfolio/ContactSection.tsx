@@ -1,76 +1,29 @@
-import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { Mail, Linkedin, Github, MapPin, Instagram } from "lucide-react";
-
-const ContactSection = () => {
-  const { ref, isVisible } = useScrollReveal();
-
-  return (
-    <section id="contato" className="py-24 md:py-32 bg-noise" ref={ref}>
-      <div className="container max-w-3xl mx-auto px-6 text-center">
-        <div className={`${isVisible ? "animate-reveal-up" : "opacity-0"}`}>
-          <p className="text-primary font-medium tracking-widest uppercase text-sm mb-3">Contato</p>
-          <h2 className="font-display text-3xl md:text-5xl mb-4 leading-tight">
-            A era quântica já começou. Sua organização já está preparada?
-          </h2>
-          <p className="text-muted-foreground text-lg mb-10 max-w-lg mx-auto">
-            Disponível para palestras, workshops, consultorias e colaborações em pesquisa.
-          </p>
-        </div>
-
-        <div className={`flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 ${isVisible ? "animate-reveal-up delay-200" : "opacity-0"}`}>
-          <a
-            href="mailto:leo.c.rossato@gmail.com"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg transition-shadow hover:shadow-[0_0_24px_hsl(var(--gold-glow)/0.4)] active:scale-[0.97]"
-          >
-            <Mail className="w-4 h-4" />
-            Enviar E-mail
-          </a>
-        </div>
-
-        <div className={`grid grid-cols-3 gap-4 max-w-md mx-auto ${isVisible ? "animate-reveal-up delay-400" : "opacity-0"}`}>
-          <a
-            href="https://www.linkedin.com/in/leonardocamargorossato/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col items-center gap-2 p-4 rounded-lg border border-border hover:border-primary/40 hover:bg-primary/5 transition-all"
-          >
-            <Linkedin className="w-5 h-5 text-primary" />
-            <span className="text-xs text-muted-foreground">LinkedIn</span>
-          </a>
-          <a
-            href="https://www.instagram.com/leonardo.camargo.rossato"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col items-center gap-2 p-4 rounded-lg border border-border hover:border-primary/40 hover:bg-primary/5 transition-all"
-          >
-            <Instagram className="w-5 h-5 text-primary" />
-            <span className="text-xs text-muted-foreground">Instagram</span>
-          </a>
-          <a
-            href="https://github.com/LeonardoCamargoRossato"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col items-center gap-2 p-4 rounded-lg border border-border hover:border-primary/40 hover:bg-primary/5 transition-all"
-          >
-            <Github className="w-5 h-5 text-primary" />
-            <span className="text-xs text-muted-foreground">GitHub</span>
-          </a>
-        </div>
-
-        <div className={`mt-6 text-base text-muted-foreground ${isVisible ? "animate-reveal-up delay-400" : "opacity-0"}`}>
-          <a href="mailto:leo.c.rossato@gmail.com" className="inline-flex items-center gap-2 hover:text-primary transition-colors">
-            <Mail className="w-4 h-4 text-primary" /> Email: leo.c.rossato@gmail.com
-          </a>
-        </div>
-
-        <div className={`mt-4 text-sm text-muted-foreground ${isVisible ? "animate-reveal-up delay-400" : "opacity-0"}`}>
-          <span className="inline-flex items-center gap-2">
-            <MapPin className="w-4 h-4" /> São José dos Campos — SP
-          </span>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-export default ContactSection;
+import { useState, type FormEvent } from "react";
+import { Github, Instagram, Linkedin, Mail, MapPin, ArrowUpRight } from "lucide-react";
+import { buildInquiryMailto, contactEmail, speakerKitMailto, type Inquiry } from "@/lib/contact";
+import { talks } from "@/data/talks";
+const initial:Inquiry={name:"",organization:"",email:"",eventType:"",theme:"",date:"",message:""};
+export default function ContactSection(){
+ const [form,setForm]=useState<Inquiry>(initial);
+ const update=(key:keyof Inquiry,value:string)=>setForm(prev=>({...prev,[key]:value}));
+ const submit=(event:FormEvent<HTMLFormElement>)=>{event.preventDefault();window.location.href=buildInquiryMailto(form);};
+ const input="mt-1.5 min-h-11 w-full rounded-lg border border-border bg-background px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/80 focus:outline-none focus:ring-2 focus:ring-primary/60";
+ return <section id="contato" className="scroll-mt-20 border-t border-border bg-noise py-20 md:py-28"><div className="container mx-auto max-w-6xl px-5 sm:px-6">
+ <div className="mb-12 max-w-3xl"><p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-primary">Contato &amp; contratação</p><h2 className="font-display text-3xl md:text-5xl">Leve Ciência e Tecnologia ao Seu Evento</h2><p className="mt-5 leading-relaxed text-muted-foreground">Palestras e experiências de aprendizagem sobre inovação, inteligência artificial, tecnologias quânticas e ciência de dados, adaptadas ao público e aos objetivos de cada evento.</p></div>
+ <div className="grid gap-8 lg:grid-cols-5 lg:gap-12">
+ <div className="rounded-2xl border border-border bg-card p-6 sm:p-8 lg:col-span-3"><h3 className="font-display text-2xl">Solicitar uma apresentação</h3><p className="mt-2 text-sm text-muted-foreground">Preencha os dados para preparar a mensagem. Seu aplicativo de e-mail será aberto para você revisar e enviar o pedido.</p>
+ <form onSubmit={submit} className="mt-6 grid gap-4 sm:grid-cols-2">
+ <label className="text-sm font-medium">Nome *<input required autoComplete="name" value={form.name} onChange={e=>update("name",e.target.value)} className={input} placeholder="Seu nome"/></label>
+ <label className="text-sm font-medium">Empresa ou instituição *<input required autoComplete="organization" value={form.organization} onChange={e=>update("organization",e.target.value)} className={input} placeholder="Organização"/></label>
+ <label className="text-sm font-medium">E-mail *<input required type="email" autoComplete="email" value={form.email} onChange={e=>update("email",e.target.value)} className={input} placeholder="seu@email.com"/></label>
+ <label className="text-sm font-medium">Tipo de evento *<select required value={form.eventType} onChange={e=>update("eventType",e.target.value)} className={input}><option value="">Selecionar formato</option>{["Palestra corporativa","Conferência / congresso","Masterclass","Workshop","Painel / debate","Outro"].map(x=><option key={x}>{x}</option>)}</select></label>
+ <label className="text-sm font-medium">Tema de interesse *<select required value={form.theme} onChange={e=>update("theme",e.target.value)} className={input}><option value="">Selecionar tema</option>{talks.map(t=><option value={t.title} key={t.id}>{t.title}</option>)}<option>Outro tema / a definir</option></select></label>
+ <label className="text-sm font-medium">Data prevista (opcional)<input type="date" value={form.date} onChange={e=>update("date",e.target.value)} className={input}/></label>
+ <label className="text-sm font-medium sm:col-span-2">Mensagem<textarea rows={4} value={form.message} onChange={e=>update("message",e.target.value)} className={input+" resize-y"} placeholder="Conte sobre o evento, o público e o objetivo da apresentação."/></label>
+ <div className="sm:col-span-2"><button type="submit" className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 font-semibold text-primary-foreground hover:brightness-110 sm:w-auto">Preparar e-mail de solicitação <Mail className="h-4 w-4"/></button><p className="mt-3 text-xs text-muted-foreground">O site não envia nem armazena seus dados; o envio ocorre após sua confirmação no aplicativo de e-mail.</p></div>
+ </form></div>
+ <aside className="space-y-5 lg:col-span-2"><div className="rounded-2xl border border-primary/25 bg-primary/5 p-6"><p className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary">Material para organizadores</p><h3 className="font-display text-2xl">Speaker Kit</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">Precisa de biografia, fotos oficiais ou detalhes sobre temas e formatos? Solicite o material para seu evento.</p><a href={speakerKitMailto} className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">Solicitar Speaker Kit por e-mail <ArrowUpRight className="h-4 w-4"/></a><p className="mt-3 text-xs text-muted-foreground">Arquivo PDF ainda não disponível para download.</p></div>
+ <div className="rounded-2xl border border-border bg-card p-6"><h3 className="font-semibold">Contato direto</h3><a href={"mailto:"+contactEmail} className="mt-4 inline-flex max-w-full items-center gap-2 break-all text-sm text-primary hover:underline"><Mail className="h-4 w-4 shrink-0"/>{contactEmail}</a><p className="mt-3 inline-flex items-center gap-2 text-sm text-muted-foreground"><MapPin className="h-4 w-4"/>São José dos Campos — SP</p><div className="mt-5 flex flex-wrap gap-3">
+ <a href="https://www.linkedin.com/in/leonardocamargorossato/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="rounded-lg border border-border p-2.5 hover:text-primary"><Linkedin className="h-5 w-5"/></a><a href="https://www.instagram.com/leonardo.camargo.rossato" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="rounded-lg border border-border p-2.5 hover:text-primary"><Instagram className="h-5 w-5"/></a><a href="https://github.com/LeonardoCamargoRossato" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="rounded-lg border border-border p-2.5 hover:text-primary"><Github className="h-5 w-5"/></a>
+ </div></div></aside></div></div></section>;
+}

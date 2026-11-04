@@ -1,68 +1,14 @@
-import { useScrollReveal } from "@/hooks/useScrollReveal";
 import profileImage from "@/assets/profile-quantum.jpg";
-
-const AboutSection = () => {
-  const { ref, isVisible } = useScrollReveal();
-
-  return (
-    <section id="sobre" className="py-24 md:py-32 bg-noise" ref={ref}>
-      <div className="container max-w-5xl mx-auto px-6">
-        <div className="grid md:grid-cols-5 gap-12 md:gap-16 items-center">
-          {/* Photo */}
-          <div className={`md:col-span-2 ${isVisible ? "animate-reveal-left" : "opacity-0"}`}>
-            <div className="relative">
-              <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl shadow-background/50">
-                <img
-                  src={profileImage}
-                  alt="Leonardo Camargo Rossato palestrando sobre Quantum Computing"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 border-2 border-primary/30 rounded-2xl" />
-            </div>
-          </div>
-
-          {/* Bio */}
-          <div className={`md:col-span-3 ${isVisible ? "animate-reveal-right delay-200" : "opacity-0"}`}>
-            <p className="text-primary font-medium tracking-widest uppercase text-sm mb-3">Sobre</p>
-            <h2 className="font-display text-3xl md:text-4xl mb-2 leading-tight">
-              Um nerd que aprendeu a falar
-            </h2>
-            <p className="text-primary/80 text-sm italic mb-6">Entendendo conceitos complexos de forma simples</p>
-            <div className="space-y-4 text-muted-foreground leading-relaxed">
-              <p>
-                Desenvolvedor de tecnologias de ponta — quânticas e híbridas. Físico, pesquisador e palestrante que conecta ciência, tecnologia e aplicações reais.
-              </p>
-              <p>
-                Presidente do <strong className="text-foreground">Foton — Instituto de Ciências e Tecnologias Quânticas</strong>, liderando projetos de P&D em otimização, sensores de alta precisão e criptografia quântica. Cofundador da <strong className="text-foreground">LACQ Feynman</strong>, movimento nacional de Ligas Acadêmicas de Computação Quântica, conectando universidades e o setor produtivo em todo o Brasil.
-              </p>
-              <p>
-                Doutorando em Engenharia pelo <strong className="text-foreground">ITA</strong>, Mestre em Física pela <strong className="text-foreground">UFRGS</strong> e Bacharel em Física pela <strong className="text-foreground">UFSM</strong>. Selecionado como único brasileiro entre sete pesquisadores apoiados mundialmente para o CCS 2023.
-              </p>
-              <p>
-                Atuação em eventos tecnológicos, corporativos e acadêmicos em mais de 10 estados brasileiros.
-              </p>
-            </div>
-
-            {/* Stats */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-8 pt-8 border-t border-border">
-              {[
-                { value: "10", label: "Estados" },
-                { value: "30+", label: "Palestras / Painéis" },
-                { value: "8+", label: "Curadoria de Eventos" },
-                { value: "5+", label: "Anos de P&D" },
-              ].map((stat) => (
-                <div key={stat.label}>
-                  <p className="text-2xl md:text-3xl font-display text-primary">{stat.value}</p>
-                  <p className="text-sm text-muted-foreground mt-1">{stat.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-export default AboutSection;
+import { ArrowUpRight } from "lucide-react";
+import { technicalPortfolioUrl } from "@/data/projects";
+export default function AboutSection(){return <section id="sobre" className="scroll-mt-20 bg-noise py-20 md:py-28"><div className="container mx-auto grid max-w-6xl items-center gap-10 px-5 sm:px-6 md:grid-cols-5 md:gap-16">
+<div className="md:col-span-2"><div className="overflow-hidden rounded-2xl border border-border shadow-2xl"><img src={profileImage} alt="Leonardo Camargo Rossato em apresentação sobre computação quântica" loading="lazy" decoding="async" className="aspect-[4/5] w-full object-cover"/></div></div>
+<div className="md:col-span-3"><p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-primary">Sobre Leonardo</p><h2 className="font-display text-3xl leading-tight md:text-4xl">Pesquisar. Desenvolver. Comunicar.</h2>
+<p className="mt-5 leading-relaxed text-foreground/85">Minha trajetória conecta pesquisa científica, desenvolvimento de tecnologias e comunicação de conhecimentos complexos para diferentes públicos.</p>
+<div className="mt-5 space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+<p>Sou físico, mestre em Física pela <strong className="font-medium text-foreground">UFRGS</strong>, bacharel em Física pela <strong className="font-medium text-foreground">UFSM</strong> e doutorando em <strong className="font-medium text-foreground">Engenharia Eletrônica e Computação pelo ITA</strong>. Atuo com ciência de dados, inteligência artificial, desenvolvimento de software e tecnologias emergentes.</p>
+<p>Como presidente do <strong className="font-medium text-foreground">Instituto Foton</strong>, participo de iniciativas que aproximam pesquisa, formação de talentos e tecnologia. A experiência em eventos empresariais, tecnológicos e científicos orienta palestras com rigor conceitual e linguagem acessível.</p>
+<p>Em cada apresentação, busco aproximar o conhecimento da aplicação: explicar possibilidades, reconhecer limitações e contribuir para discussões relevantes.</p>
+</div><p className="mt-6 border-l-2 border-primary/60 pl-4 text-sm italic text-foreground/70">“Um nerd que aprendeu a falar.”</p>
+<a href={technicalPortfolioUrl} target="_blank" rel="noopener noreferrer" className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">Conhecer projetos e soluções tecnológicas <ArrowUpRight className="h-4 w-4"/></a>
+</div></div></section>;}

@@ -1,74 +1,16 @@
-import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { Atom, BarChart3, Cpu, Radar, GraduationCap, Brain } from "lucide-react";
-
-const topics = [
-  {
-    icon: Atom,
-    title: "Tecnologias Quânticas",
-    description: "Panorama, aplicações e impactos estratégicos em diferentes setores",
-  },
-  {
-    icon: Cpu,
-    title: "Computação Quântica",
-    description: "Do conceito à aplicação: como empresas e instituições podem se preparar",
-  },
-  {
-    icon: BarChart3,
-    title: "Ciência de Dados",
-    description: "Como transformar dados em decisões estratégicas",
-  },
-  {
-    icon: Radar,
-    title: "Fusão Sensorial",
-    description: "Integração de sensores e validação de sistemas complexos",
-  },
-  {
-    icon: Brain,
-    title: "IA e Tecnologias Emergentes",
-    description: "Tendências, oportunidades e impacto no futuro da tecnologia",
-  },
-  {
-    icon: GraduationCap,
-    title: "Formação de Talentos",
-    description: "Como preparar profissionais para áreas de alta complexidade tecnológica",
-  },
-];
-
-const TopicsSection = () => {
-  const { ref, isVisible } = useScrollReveal();
-
-  return (
-    <section id="temas" className="py-24 md:py-32" ref={ref}>
-      <div className="container max-w-5xl mx-auto px-6">
-        <div className={`text-center mb-16 ${isVisible ? "animate-reveal-up" : "opacity-0"}`}>
-          <p className="text-primary font-medium tracking-widest uppercase text-sm mb-3">Temas</p>
-          <h2 className="font-display text-3xl md:text-4xl mb-3">Quantum nos Negócios</h2>
-          <p className="text-muted-foreground max-w-lg mx-auto">Entendendo conceitos complexos de forma simples — do laboratório à sala de reunião.</p>
-        </div>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {topics.map((topic, i) => {
-            const Icon = topic.icon;
-            return (
-              <div
-                key={topic.title}
-                className={`group p-6 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 active:scale-[0.98] ${
-                  isVisible ? `animate-reveal-up` : "opacity-0"
-                }`}
-                style={{ animationDelay: `${(i + 1) * 100}ms` }}
-              >
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                  <Icon className="w-5 h-5 text-primary" />
-                </div>
-                <h3 className="font-semibold text-lg mb-2">{topic.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{topic.description}</p>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-};
-
-export default TopicsSection;
+import { Atom, Brain, BarChart3, Cpu, ArrowUpRight, ArrowRight } from "lucide-react";
+import { talks, complementaryOffers } from "@/data/talks";
+import { buildInquiryMailto } from "@/lib/contact";
+const icons=[Atom,Brain,BarChart3,Cpu];
+export default function TopicsSection(){return <section id="palestras" className="scroll-mt-20 py-20 md:py-28"><div className="container mx-auto max-w-6xl px-5 sm:px-6">
+<div className="mb-12 max-w-3xl"><p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-primary">Palestras &amp; Masterclasses</p><h2 className="font-display text-3xl md:text-5xl">Tecnologia explicada para quem precisa decidir, criar e inovar.</h2><p className="mt-5 leading-relaxed text-muted-foreground">Apresentações para empresas, conferências e instituições. Conteúdo e linguagem adaptáveis ao conhecimento do público e ao objetivo do evento.</p></div>
+<div className="grid gap-5 md:grid-cols-2">{talks.map((talk,index)=>{const Icon=icons[index];return <article key={talk.id} className="flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/40 sm:p-8">
+<div className="mb-5 flex items-center justify-between"><div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10"><Icon className="h-5 w-5 text-primary"/></div><span className="text-xs font-semibold uppercase tracking-wide text-primary">{talk.category}</span></div>
+<h3 className="font-display text-2xl leading-snug">{talk.title}</h3><p className="mt-4 text-sm leading-relaxed text-muted-foreground">{talk.description}</p><p className="mt-5 text-xs font-semibold uppercase tracking-wider text-foreground/65">Público recomendado</p><p className="mt-1 text-sm">{talk.audience}</p>
+<div className="mt-5 flex flex-wrap gap-2">{talk.topics.map(t=><span key={t} className="rounded-full border border-border bg-background px-3 py-1.5 text-xs text-foreground/75">{t}</span>)}</div>
+<p className="mt-5 text-xs text-muted-foreground">Formatos: {talk.formats.join(" · ")}</p>
+<a href={buildInquiryMailto({theme:talk.title})} className="mt-6 inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-primary/60 px-4 py-2.5 text-sm font-semibold text-primary hover:bg-primary hover:text-primary-foreground">Solicitar esta palestra <ArrowUpRight className="h-4 w-4"/></a>
+</article>})}</div>
+<div className="mt-12 rounded-2xl border border-border bg-background/70 p-6 sm:p-8"><div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-start"><div><p className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary">Aprofundamento técnico</p><h3 className="font-display text-2xl">Masterclasses &amp; Workshops</h3><p className="mt-2 max-w-2xl text-sm text-muted-foreground">Ofertas complementares com estudos de caso, demonstrações e atividades práticas.</p></div><a href="#formatos" className="inline-flex shrink-0 items-center gap-2 text-sm text-primary hover:underline">Conhecer formatos <ArrowRight className="h-4 w-4"/></a></div>
+<div className="mt-6 grid gap-3 sm:grid-cols-2">{complementaryOffers.map(item=><div key={item.title} className="rounded-xl border border-border bg-card/60 p-4"><span className="text-xs text-primary">{item.category}</span><h4 className="mt-1 font-semibold">{item.title}</h4><p className="mt-1 text-sm text-muted-foreground">{item.detail}</p></div>)}</div></div>
+</div></section>;}

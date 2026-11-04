@@ -1,209 +1,24 @@
 import { useState } from "react";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
-import stageImage from "@/assets/hero-stage.jpg";
-import { GraduationCap, Rocket, Globe, Building2, Star, MapPin } from "lucide-react";
-
-const categories = [
-  {
-    id: "highlights",
-    label: "Eventos Destaque",
-    icon: Star,
-    events: [
-      { name: "South Summit 2026", role: "Porto Alegre, RS" },
-      { name: "SecOps Summit 2026", role: "Porto Alegre, RS" },
-      { name: "Expointer 2025", role: "Porto Alegre, RS" },
-      { name: "MVP Conference 2025", role: "São Paulo, SP" },
-      { name: "Latinoware / Itaipu 2025", role: "Foz do Iguaçu, PR" },
-      { name: "Data Science Summit (DSS) 2024 e 2025", role: "Curitiba, PR" },
-      { name: "CCS 2023", role: "Salvador, BA" },
-      { name: "EOSBF 2023, 2024, 2025", role: "Ouro Preto (MG), Florianópolis (SC), Belém (PA) — Principal congresso nacional de física" },
-      { name: "IIP Natal 2023", role: "Natal, RN" },
-    ],
-  },
-  {
-    id: "tech",
-    label: "Tecnologia & Mercado",
-    icon: Rocket,
-    events: [
-      { name: "SecOps Summit Porto Alegre 2026", role: "Palestrante" },
-      { name: "South Summit Porto Alegre 2026", role: "Palestrante" },
-      { name: "Expointer 2025", role: "Palestrante — Tecnologias quânticas" },
-      { name: "MVP Conference 2025", role: "Microsoft — Palestrante + curador" },
-      { name: "Esquenta MVP POA 2025", role: "Palestrante + painelista" },
-      { name: "DSS Curitiba 2025", role: "Data Science Summit — Curadoria + trilha quântica" },
-      { name: "TechNow 2025", role: "SUCESU-RS — Palestrante" },
-      { name: "Latinoware 2025", role: "Itaipu — Curadoria e trilha quântica" },
-      { name: "DSS Curitiba 2024", role: "Data Science Summit — Palestrante" },
-    ],
-  },
-  {
-    id: "academic-institutional",
-    label: "Acadêmico & Institucional",
-    icon: GraduationCap,
-    sections: [
-      {
-        title: "Acadêmicos",
-        events: [
-          { name: "EOSBF 2025", role: "Encontro de Outono da SBF — Apresentação oral" },
-          { name: "EOSBF 2024", role: "Encontro de Outono da SBF — Apresentação de trabalho" },
-          { name: "ENFE 2024", role: "Encontro Nacional de Física Estatística — Apresentação de trabalho" },
-          { name: "CCS 2023", role: "Conference on Complex Systems — Apresentação oral internacional (bolsa YSI)" },
-          { name: "IIP Natal 2023", role: "Workshop on New Frontiers in Emergent Materials — Apresentação de trabalho" },
-          { name: "EOSBF 2023", role: "Encontro de Outono da SBF — Apresentação de trabalho" },
-          { name: "EIEMAT 2023", role: "Encontro Interinstitucional de Educação Matemática — Minicurso / palestra" },
-        ],
-      },
-      {
-        title: "Institucional & Universidades",
-        events: [
-          { name: "Inauguração LACQ USP 2025", role: "Palestrante" },
-          { name: "Inauguração LACQ PUCRS 2025", role: "Palestrante" },
-          { name: "Jornada Foton–LACQ Tecnopuc 2025", role: "Tecnologias Quânticas — Palestrante recorrente" },
-          { name: "Semana LACQ UFRGS 2025", role: "Computação Quântica — Organização + palestras" },
-          { name: "Aula Magna UNISINOS 2025", role: "PPG Administração — Palestrante" },
-          { name: "Inauguração LACQ UFRGS 2024", role: "Palestrante" },
-        ],
-      },
-    ],
-    events: [],
-  },
-  {
-    id: "outreach",
-    label: "Palestras & Divulgação",
-    icon: Globe,
-    events: [
-      { name: "MOBI Festival 2025", role: "Sorocaba — Palestrante" },
-      { name: "ENAEPE 2025", role: "Manaus — Palestrante" },
-      { name: "Evento Quântico Manaus 2025", role: "Tecnologias Quânticas — Palestrante" },
-      { name: "Workshop Computação Quântica Floripa", role: "7ª Edição — Palestrante" },
-    ],
-  },
-  {
-    id: "visits",
-    label: "Visitas Técnicas",
-    icon: MapPin,
-    events: [
-      { name: "Samsung", role: "Fábrica de Manaus" },
-      { name: "INDT", role: "Instituto Nokia de Tecnologia" },
-      { name: "Porto Digital", role: "Recife" },
-      { name: "Motorola / Centro de Computação", role: "Recife" },
-      { name: "Instituto Von Braun", role: "Campinas" },
-      { name: "Sirius (CNPEM)", role: "Acelerador de Partículas" },
-      { name: "SENAI CIMATEC", role: "Salvador" },
-      { name: "CBA", role: "Centro de Bionegócios da Amazônia" },
-    ],
-  },
-];
-
-const tabDescriptions: Record<string, string> = {
-  highlights: "Principais eventos com participação como palestrante, painelista e curador.",
-  visits: "Participação em visitas técnicas e interação com empresas, centros de pesquisa e polos tecnológicos, acompanhando de perto o desenvolvimento de tecnologias avançadas no Brasil.",
-};
-
-const tabSubtitles: Record<string, string> = {
-  visits: "Conexão com Centros de Tecnologia e Inovação",
-};
-
-const EventsSection = () => {
-  const { ref, isVisible } = useScrollReveal();
-  const [activeTab, setActiveTab] = useState("highlights");
-
-  const activeCategory = categories.find((c) => c.id === activeTab)!;
-
-  return (
-    <section id="eventos" className="py-24 md:py-32 bg-noise" ref={ref}>
-      {/* Full-width image */}
-      <div className={`w-full mb-12 ${isVisible ? "animate-reveal-up" : "opacity-0"}`}>
-        <div className="aspect-[21/9] overflow-hidden">
-          <img
-            src={stageImage}
-            alt="Leonardo palestrando em evento de tecnologia"
-            className="w-full h-full object-cover"
-          />
-        </div>
-      </div>
-
-      <div className="container max-w-5xl mx-auto px-6">
-        <div className={`${isVisible ? "animate-reveal-up delay-200" : "opacity-0"}`}>
-          <p className="text-primary font-medium tracking-widest uppercase text-sm mb-3">Eventos</p>
-          <h2 className="font-display text-3xl md:text-4xl mb-3 leading-tight">
-            Tecnologia através da Ciência
-          </h2>
-          <p className="text-muted-foreground text-sm mb-8">
-            Construindo pontes entre pesquisa acadêmica e o setor produtivo em mais de 10 estados brasileiros.
-          </p>
-
-          {/* Category tabs */}
-          <div className="flex flex-wrap gap-2 mb-8">
-            {categories.map((cat) => {
-              const Icon = cat.icon;
-              return (
-                <button
-                  key={cat.id}
-                  onClick={() => setActiveTab(cat.id)}
-                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                    activeTab === cat.id
-                      ? "bg-primary text-primary-foreground shadow-md"
-                      : "bg-muted text-muted-foreground hover:text-foreground hover:bg-muted/80"
-                  }`}
-                >
-                  <Icon className="w-4 h-4" />
-                  {cat.label}
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Tab subtitle & description */}
-          {tabSubtitles[activeTab] && (
-            <h3 className="font-semibold text-lg mb-2">{tabSubtitles[activeTab]}</h3>
-          )}
-          {tabDescriptions[activeTab] && (
-            <p className="text-muted-foreground text-sm mb-6">{tabDescriptions[activeTab]}</p>
-          )}
-
-          {/* Events list */}
-          <div className="space-y-0">
-            {'sections' in activeCategory && activeCategory.sections ? (
-              activeCategory.sections.map((section: { title: string; events: { name: string; role: string }[] }, si: number) => (
-                <div key={section.title}>
-                  <h3 className="font-semibold text-primary text-sm uppercase tracking-wide mt-6 mb-3 first:mt-0">
-                    {section.title}
-                  </h3>
-                  {section.events.map((event, i) => (
-                    <div
-                      key={event.name}
-                      className="py-4 border-b border-border last:border-0 group animate-fade-in"
-                      style={{ animationDelay: `${(si * 10 + i) * 50}ms` }}
-                    >
-                      <h3 className="font-semibold group-hover:text-primary transition-colors">{event.name}</h3>
-                      <p className="text-sm text-muted-foreground mt-1">{event.role}</p>
-                    </div>
-                  ))}
-                </div>
-              ))
-            ) : (
-              activeCategory.events.map((event, i) => (
-                <div
-                  key={event.name}
-                  className="py-4 border-b border-border last:border-0 group animate-fade-in"
-                  style={{ animationDelay: `${i * 50}ms` }}
-                >
-                  <h3 className="font-semibold group-hover:text-primary transition-colors">{event.name}</h3>
-                  <p className="text-sm text-muted-foreground mt-1">{event.role}</p>
-                </div>
-              ))
-            )}
-          </div>
-
-          {/* Total count */}
-          <p className="text-xs text-muted-foreground mt-6 pt-4 border-t border-border">
-            30+ palestras entre conferências acadêmicas, tecnologia, divulgação e institucionais.
-          </p>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-export default EventsSection;
+import { eventCategories, featuredEvents } from "@/data/events";
+import { ArrowUpRight, MapPin } from "lucide-react";
+import southSummit from "@/assets/gallery-southsummit1.jpg";
+import autocom from "@/assets/gallery-autocom1.jpg";
+import mvp from "@/assets/gallery-quantum.jpg";
+import latinoware from "@/assets/gallery-latinoware.jpg";
+import dss from "@/assets/hero-stage.jpg";
+const photos:Record<string,string>={southsummit:southSummit,autocom,mvp,latinoware,dss};
+export default function EventsSection(){
+ const [activeTab,setActiveTab]=useState("tech");
+ const category=eventCategories.find(x=>x.id===activeTab)||eventCategories[0];
+ return <section id="eventos" className="scroll-mt-20 bg-noise py-20 md:py-28"><div className="container mx-auto max-w-6xl px-5 sm:px-6">
+ <div className="mb-10 max-w-3xl"><p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-primary">Experiência documentada</p><h2 className="font-display text-3xl md:text-5xl">Apresentações em Destaque</h2><p className="mt-4 text-sm leading-relaxed text-muted-foreground">Registros de eventos tecnológicos, conferências e atividades institucionais. As funções são apresentadas como palestra, curadoria, painel ou apresentação científica, conforme os dados existentes.</p></div>
+ <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{featuredEvents.map(event=><article key={event.name} className="overflow-hidden rounded-2xl border border-border bg-card">
+ <img src={photos[event.image]} alt={"Registro fotográfico relacionado a "+event.name} loading="lazy" decoding="async" className="aspect-[16/10] w-full object-cover"/>
+ <div className="p-5"><p className="text-xs font-semibold text-primary">{event.year} · {event.role}</p><h3 className="mt-2 font-display text-xl">{event.name}</h3>{event.location&&<p className="mt-2 inline-flex items-center gap-1 text-xs text-muted-foreground"><MapPin className="h-3.5 w-3.5"/>{event.location}</p>}</div></article>)}</div>
+ <div className="mt-16 border-t border-border pt-12"><div className="mb-6 flex flex-col justify-between gap-3 sm:flex-row sm:items-end"><div><p className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary">Histórico</p><h3 className="font-display text-2xl md:text-3xl">Eventos e participações</h3></div><a href="#galeria" className="inline-flex items-center gap-2 text-sm text-primary hover:underline">Ver galeria <ArrowUpRight className="h-4 w-4"/></a></div>
+ <div role="tablist" aria-label="Categorias de eventos" className="mb-6 flex flex-wrap gap-2">{eventCategories.map(item=><button type="button" role="tab" aria-selected={activeTab===item.id} key={item.id} onClick={()=>setActiveTab(item.id)} className={"rounded-full border px-4 py-2 text-xs font-semibold transition-colors sm:text-sm "+(activeTab===item.id?"border-primary bg-primary text-primary-foreground":"border-border bg-card text-foreground/75 hover:border-primary/40")}>{item.label}</button>)}</div>
+ <div role="tabpanel" className="rounded-2xl border border-border bg-card/55 px-5 py-2 sm:px-7">{category.id==="visits"&&<p className="py-4 text-sm text-muted-foreground">Visitas técnicas — não são classificadas como palestras.</p>}
+ {"sections" in category&&category.sections?category.sections.map(section=><div key={section.title} className="py-4"><h4 className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary">{section.title}</h4>{section.events.map(event=><div key={event.name} className="border-b border-border py-3 last:border-0"><h5 className="font-medium">{event.name}</h5><p className="mt-1 text-sm text-muted-foreground">{event.role}</p></div>)}</div>):category.events.map(event=><div key={event.name} className="border-b border-border py-4 last:border-0"><h4 className="font-medium">{event.name}</h4><p className="mt-1 text-sm text-muted-foreground">{event.role}</p></div>)}</div>
+ <p className="mt-4 text-xs text-muted-foreground">Histórico preservado da versão anterior. Títulos e dados não confirmados não foram acrescentados.</p>
+ </div></div></section>;
+}

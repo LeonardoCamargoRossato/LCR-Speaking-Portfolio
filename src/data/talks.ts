@@ -1,0 +1,14 @@
+export type Talk = { id: string; title: string; category: string; audience: string; description: string; topics: string[]; formats: string[] };
+export const talks: Talk[] = [
+{ id:"quantum-business", category:"Tecnologias quânticas", title:"A Era Quântica Já Começou: Sua Organização Está Preparada?", audience:"Empresas, lideranças, gestores e profissionais de inovação", description:"Panorama das tecnologias quânticas, oportunidades, limitações e possíveis impactos estratégicos para organizações.", topics:["Cenário tecnológico","Aplicações potenciais","Riscos e limitações"], formats:["Palestra corporativa","Painel"] },
+{ id:"ai-agents", category:"Inteligência artificial", title:"Inteligência Artificial Além do Chat: Aplicações, Agentes e Automações", audience:"Gestores de tecnologia, empresas e equipes de transformação digital", description:"Como a inteligência artificial pode apoiar processos, análise de informação, automações e arquiteturas de soluções.", topics:["Agentes de IA","Automações","Soluções empresariais"], formats:["Palestra corporativa","Masterclass"] },
+{ id:"data-decisions", category:"Ciência de dados", title:"Dos Dados à Decisão: Ciência de Dados Aplicada a Problemas Reais", audience:"Gestores, analistas, empresas e instituições", description:"Como indicadores, estatística, visualização de dados e modelos quantitativos ajudam a compreender sistemas complexos e apoiar decisões.", topics:["Indicadores e visualização","Estatística","Métodos quantitativos"], formats:["Palestra corporativa","Workshop"] },
+{ id:"quantum-computing", category:"Computação quântica", title:"Computação Quântica: Do Conceito às Aplicações", audience:"Empresas, profissionais técnicos, universidades e centros de pesquisa", description:"Fundamentos, desafios, possibilidades e perspectivas da computação quântica com linguagem ajustada ao público.", topics:["Fundamentos","Desafios","Perspectivas"], formats:["Palestra","Masterclass"] }
+];
+export const complementaryOffers = [
+{ title:"Masterclass de Computação Quântica", category:"Masterclass", detail:"Aprofundamento conceitual, estudos de caso e demonstrações." },
+{ title:"Workshop de Ciência de Dados", category:"Workshop", detail:"Métodos quantitativos e atividades práticas." },
+{ title:"Computação Científica com Python e Jupyter", category:"Workshop", detail:"Notebooks, métodos numéricos e visualização científica." },
+{ title:"Sensores, Fusão Sensorial e Tecnologias Emergentes", category:"Masterclass", detail:"Aplicações em sistemas tecnológicos complexos." },
+{ title:"Formação de Talentos em Tecnologias Avançadas", category:"Palestra / workshop", detail:"Desenvolvimento de competências em áreas emergentes." }
+];

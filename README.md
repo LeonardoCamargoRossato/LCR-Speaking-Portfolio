@@ -1,26 +1,29 @@
-# Portifólio Palestras
+# LCR Speaking Portfolio
 
-preciso criar  um portifólio pessoal para  minhas  palestras. vou le enviar  um exemplo
+Site profissional para palestras, masterclasses, workshops e participações em eventos de Leonardo Camargo Rossato.
 
-This project was built with [Lovable](https://lovable.dev).
+**Site:** https://leonardocamargorossato.github.io/LCR-Speaking-Portfolio/
 
-**Live app**: https://leonardo-camargo-rossato.lovable.app
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/3e803164-8230-4119-a743-da3ccf953ba1).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+## Desenvolvimento
+```bash
+npm install
 npm run dev
+npm run test
+GITHUB_PAGES=true npm run build
 ```
+
+GitHub Pages: `.github/workflows/deploy-pages.yml` (mantido). O build publica com base `/LCR-Speaking-Portfolio/`.
+
+## Manutenção editorial
+- `src/data/talks.ts`: ofertas e formatos de palestras.
+- `src/data/events.ts`: acervo histórico da V0 e destaques.
+- `src/data/gallery.ts`: fotografias do projeto original.
+- `src/data/projects.ts`: três projetos técnicos demonstráveis.
+- `src/data/publications.ts`: trabalhos científicos com DOI.
+- `src/lib/contact.ts`: endereço de contato e geração do e-mail.
+- `src/assets/speaker-reel-placeholder.svg`: **capa provisória**, não fotografia/vídeo real.
+
+## Pendências
+Validar indicadores históricos (30+ palestras/painéis, 10+ estados, 8+ curadorias e anos de P&D), conferir papéis e localidades dos eventos destacados, complementar links oficiais de comprovação, revisar legendas do acervo fotográfico, adicionar vídeo real e PDF de Speaker Kit. Nenhuma dessas informações pendentes foi fabricada nesta versão.
+
+A V1 não utiliza banco de dados ou Supabase. Formulário prepara um `mailto:`; o visitante confirma o envio pelo aplicativo de e-mail.

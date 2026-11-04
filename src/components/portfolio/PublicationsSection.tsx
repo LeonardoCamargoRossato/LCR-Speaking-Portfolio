@@ -1,60 +1,12 @@
-import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { Navigation, BarChart3, GraduationCap } from "lucide-react";
-
-const projects = [
-  {
-    icon: Navigation,
-    title: "Arquitetura de Navegação Híbrida",
-    description: "Sistema de navegação independente de GPS baseado em sensores clássicos e quânticos.",
-  },
-  {
-    icon: BarChart3,
-    title: "Plataforma de Análise de Indicadores",
-    description: "Ferramenta de análise socioeconômica utilizando grafos e ciência de dados.",
-  },
-  {
-    icon: GraduationCap,
-    title: "Aplicações Educacionais em Computação Quântica",
-    description: "Ferramentas interativas para ensino e visualização de conceitos complexos.",
-  },
-];
-
-const PublicationsSection = () => {
-  const { ref, isVisible } = useScrollReveal();
-
-  return (
-    <section id="publicacoes" className="py-24 md:py-32" ref={ref}>
-      <div className="container max-w-5xl mx-auto px-6">
-        <div className={`text-center mb-16 ${isVisible ? "animate-reveal-up" : "opacity-0"}`}>
-          <p className="text-primary font-medium tracking-widest uppercase text-sm mb-3">Projetos</p>
-          <h2 className="font-display text-3xl md:text-4xl">Projetos em Destaque</h2>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-6">
-          {projects.map((project, i) => {
-            const Icon = project.icon;
-            return (
-              <div
-                key={project.title}
-                className={`p-8 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300 ${isVisible ? "animate-reveal-up" : "opacity-0"}`}
-                style={{ animationDelay: `${(i + 1) * 100}ms` }}
-              >
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                  <Icon className="w-5 h-5 text-primary" />
-                </div>
-                <h3 className="font-semibold text-lg mb-2">{project.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{project.description}</p>
-              </div>
-            );
-          })}
-        </div>
-
-        <p className={`text-center text-sm text-muted-foreground mt-10 italic ${isVisible ? "animate-reveal-up delay-400" : "opacity-0"}`}>
-          Em breve: portfólio técnico completo.
-        </p>
-      </div>
-    </section>
-  );
-};
-
-export default PublicationsSection;
+import { ArrowUpRight, Code2, Globe2, NotebookTabs } from "lucide-react";
+import { projects, technicalPortfolioUrl } from "@/data/projects";
+const icons=[NotebookTabs,Globe2,Code2];
+export default function PublicationsSection(){return <section id="projetos" className="scroll-mt-20 py-20 md:py-24"><div className="container mx-auto max-w-6xl px-5 sm:px-6">
+<div className="mb-10 max-w-2xl"><p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-primary">Conhecimento aplicado</p><h2 className="font-display text-3xl md:text-4xl">Da Pesquisa à Prática</h2><p className="mt-4 text-muted-foreground">Conhecimento científico também pode ser demonstrado, explorado e experimentado.</p></div>
+<div className="grid gap-5 md:grid-cols-3">{projects.map((project,index)=>{const Icon=icons[index];return <article key={project.title} className="flex flex-col rounded-2xl border border-border bg-card p-6">
+<div className="mb-5 flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10"><Icon className="h-5 w-5 text-primary"/></div><p className="text-xs uppercase tracking-wider text-primary">{project.category}</p><h3 className="mt-2 text-lg font-semibold">{project.title}</h3><p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{project.description}</p>
+<a href={project.url} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">Explorar projeto <ArrowUpRight className="h-4 w-4"/></a>
+{"otherUrl" in project&&project.otherUrl&&<a href={project.otherUrl} target="_blank" rel="noopener noreferrer" className="mt-2 text-xs text-muted-foreground hover:text-foreground">Repositório acadêmico</a>}
+</article>})}</div>
+<div className="mt-8 flex flex-col justify-between gap-4 rounded-xl border border-primary/20 bg-primary/5 p-5 sm:flex-row sm:items-center"><p className="text-sm text-foreground/85">Conheça meu portfólio completo de soluções e aplicações.</p><a href={technicalPortfolioUrl} target="_blank" rel="noopener noreferrer" className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-primary hover:underline">Acessar portfólio técnico <ArrowUpRight className="h-4 w-4"/></a></div>
+</div></section>;}
