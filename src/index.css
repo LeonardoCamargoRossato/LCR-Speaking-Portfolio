@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=DM+Serif+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,49 +6,39 @@
 
 @layer base {
   :root {
-    --background: 220 20% 7%;
-    --foreground: 40 20% 92%;
-
-    --card: 220 18% 11%;
-    --card-foreground: 40 20% 92%;
-
-    --popover: 220 18% 11%;
-    --popover-foreground: 40 20% 92%;
-
-    --primary: 38 75% 55%;
-    --primary-foreground: 220 20% 7%;
-
-    --secondary: 220 15% 16%;
-    --secondary-foreground: 40 15% 80%;
-
-    --muted: 220 15% 16%;
-    --muted-foreground: 220 10% 55%;
-
-    --accent: 38 75% 55%;
-    --accent-foreground: 220 20% 7%;
-
-    --destructive: 0 84.2% 60.2%;
+    color-scheme: dark;
+    /* Corporate tech palette: navy, blue and accessible cyan */
+    --background: 221 58% 7%;                /* #080F1E */
+    --foreground: 210 40% 96%;               /* #F1F5F9 */
+    --card: 217 51% 14%;                    /* #111F35 */
+    --card-foreground: 210 40% 96%;
+    --popover: 217 51% 14%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 213 94% 68%;                 /* Accessible blue for small text */
+    --primary-foreground: 221 58% 7%;
+    --secondary: 217 55% 12%;
+    --secondary-foreground: 213 31% 76%;
+    --muted: 215 48% 18%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 188 86% 53%;                  /* #22D3EE */
+    --accent-foreground: 221 58% 7%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 210 40% 98%;
-
-    --border: 220 15% 18%;
-    --input: 220 15% 18%;
-    --ring: 38 75% 55%;
-
+    --border: 215 38% 27%;
+    --input: 215 38% 27%;
+    --ring: 188 86% 53%;
     --radius: 0.5rem;
-
-    --sidebar-background: 220 18% 11%;
-    --sidebar-foreground: 40 20% 92%;
-    --sidebar-primary: 38 75% 55%;
-    --sidebar-primary-foreground: 220 20% 7%;
-    --sidebar-accent: 220 15% 16%;
-    --sidebar-accent-foreground: 40 20% 92%;
-    --sidebar-border: 220 15% 18%;
-    --sidebar-ring: 38 75% 55%;
-
-    /* Custom tokens */
-    --surface-elevated: 220 16% 14%;
-    --text-dim: 220 10% 45%;
-    --gold-glow: 38 80% 50%;
+    --sidebar-background: 217 51% 14%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 213 94% 68%;
+    --sidebar-primary-foreground: 221 58% 7%;
+    --sidebar-accent: 215 48% 18%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 215 38% 27%;
+    --sidebar-ring: 188 86% 53%;
+    --surface-elevated: 216 52% 17%;
+    --text-dim: 215 20% 65%;
+    --tech-blue: 221 83% 53%;              /* #2563EB — primary CTA */
   }
 }
 
@@ -73,12 +63,14 @@
 
 @layer utilities {
   .font-display {
-    font-family: 'DM Serif Display', serif;
+    font-family: 'Space Grotesk', 'DM Sans', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.035em;
   }
 
   .text-gradient {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(38 75% 55%), hsl(38 90% 70%));
+    background-image: linear-gradient(115deg, hsl(var(--primary)), hsl(var(--accent)));
   }
 }
 
@@ -175,4 +167,67 @@ input,select,textarea { max-width: 100%; }
  html { scroll-behavior: auto; }
  .animate-reveal-up,.animate-reveal-left,.animate-reveal-right,.animate-fade-in { animation: none !important; }
  *,*::before,*::after { transition-duration:0.01ms !important; }
+}
+
+/* HOTFIX: restrained corporate-technology styling; reusable across existing components. */
+h1.font-display { font-weight: 700; letter-spacing: -0.052em; }
+h2.font-display { font-weight: 600; letter-spacing: -0.038em; }
+h3.font-display { font-weight: 600; letter-spacing: -0.026em; }
+.tech-cta-primary {
+  background-color: hsl(var(--tech-blue));
+  color: #f1f5f9;
+  box-shadow: 0 8px 24px rgb(3 10 28 / 0.22);
+  transition: background-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+.tech-cta-primary:hover, .tech-cta-primary:focus-visible {
+  background-color: #1d4ed8;
+  box-shadow: 0 10px 28px rgb(3 10 28 / 0.3);
+}
+a:not(.tech-cta-primary):hover { text-underline-offset: 4px; }
+.speaker-hero { background-color: #080f1e; }
+.speaker-hero__image { object-position: center 52%; }
+.speaker-hero__overlay {
+  background:
+    linear-gradient(180deg, rgb(8 15 30 / 0.1) 0%, rgb(8 15 30 / 0.04) 34%, rgb(8 15 30 / 0.53) 67%, #080f1e 100%),
+    linear-gradient(90deg, rgb(8 15 30 / 0.35) 0%, rgb(8 15 30 / 0.07) 64%, transparent 100%);
+}
+.speaker-hero__copy { text-shadow: 0 2px 20px rgb(8 15 30 / .22); }
+section.bg-noise::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgb(96 165 250 / .055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(96 165 250 / .055) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 25%, black 75%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, black 25%, black 75%, transparent);
+  opacity: .45;
+}
+@media (max-width: 639px) {
+  /* Show the whole stage photo on narrow displays instead of cropping away the audience. */
+  .speaker-hero {
+    padding-top: clamp(19rem, 80vw, 25rem);
+    min-height: max(100svh, 760px);
+  }
+  .speaker-hero__image {
+    inset: 4rem 0 auto;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+    object-position: center top;
+  }
+  .speaker-hero__overlay {
+    background: linear-gradient(180deg,
+      rgb(8 15 30 / 0.02) 0%,
+      rgb(8 15 30 / 0.08) 22%,
+      rgb(8 15 30 / 0.76) 39%,
+      #080f1e 57%
+    );
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tech-cta-primary { transition: none; }
 }
